@@ -21,13 +21,12 @@ params ["_unit","_level"];
 
 
 private _stageCurrent = _unit getVariable [QGVAR(poisonStage), 0];
-private _stageNew;
-private _return = false;
+private _stageNew = 0;
 
 if (_level == 0) then {
 	_stageNew = 0;
 };
-if (_level > 10) then {
+if (_level > 1) then {
 	_stageNew = 1;
 };
 if (_level > 25) then {
@@ -45,8 +44,7 @@ if (_level > 100) then {
 
 if (_stageCurrent != _stageNew) then {
 	_unit setVariable [QGVAR(poisonStage), _stageNew, true];
-	_return = true;
 };
 
-_return
+_stageNew
 

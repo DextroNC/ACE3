@@ -22,4 +22,4 @@ _unit = (_this select 0) select 0;
 removeGoggles _unit;
 _unit addGoggles (_unit getVariable "oldGoggles");
 _unit setUnitTrait ["loadCoef",1];
-},{hint "Action Canceled"}, "Equiping Gasmask..."] call EFUNC(common,progressBar);;
+},{hint "Action Canceled"}, "Equiping Gasmask..."] call EFUNC(common,progressBar);

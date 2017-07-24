@@ -28,5 +28,5 @@ _unit setUnitTrait ["loadCoef",0.75];
 if (!(goggles player isEqualTo GVAR(gasMask))) then {
 	[_this select 1] call CBA_fnc_removePerFrameHandler;
 } else {player action ["nvGogglesOff", player];};
-}, 0.5] call CBA_fnc_addPerFrameHandler;
-},{hint "Action Canceled"}, "Equiping Gasmask..."] call EFUNC(common,progressBar);;
+}, 0.1] call CBA_fnc_addPerFrameHandler;
+},{hint "Action Canceled"}, "Equiping Gasmask..."] call EFUNC(common,progressBar);

@@ -19,35 +19,35 @@
 
 params ["_unit", "_level"];
 
-
-if ([_unit, _level] call ACE_medical_fnc_updatePoisonStage) then {
+_old = _unit getVariable [QGVAR(poisonStage), 0];
+if ([_unit, _level] call FUNC(updatePoisonStage) != _old) then {
 	switch (_unit getVariable [QGVAR(poisonStage), 0]) do {
 		case 1: {
-			"dynamicBlur" ppEffectEnable true; // enables ppeffect
-			"dynamicBlur" ppEffectAdjust [0.5]; // intensity of blur
-			"dynamicBlur" ppEffectCommit 10; // time till vision is fully blurred
+			GVAR(Poison_ppHandle_GUI_BLUR_SCREEN) = ppEffectCreate ["DynamicBlur", 102];
+			GVAR(Poison_ppHandle_GUI_BLUR_SCREEN) ppEffectAdjust [0.5];
+			GVAR(Poison_ppHandle_GUI_BLUR_SCREEN) ppEffectEnable true;
+			GVAR(Poison_ppHandle_GUI_BLUR_SCREEN) ppEffectCommit 10;
 		};
 		case 2: {
-			"dynamicBlur" ppEffectEnable true;
-			"dynamicBlur" ppEffectAdjust [2];
-			"dynamicBlur" ppEffectCommit 10;
+			GVAR(Poison_ppHandle_GUI_BLUR_SCREEN) ppEffectAdjust [2];
+			GVAR(Poison_ppHandle_GUI_BLUR_SCREEN) ppEffectEnable true;
+			GVAR(Poison_ppHandle_GUI_BLUR_SCREEN) ppEffectCommit 10;
 			[_unit, 0.2] call FUNC(adjustPainLevel);
 		};
 		case 3: {
 			[_unit, 0.2] call FUNC(adjustPainLevel);
 		};
 		case 4: {
-			[_unit, 0.25, "body", "stab"] call ace_medical_fnc_addDamageToUnit;
-			[_unit, 0.25, "head", "stab"] call ace_medical_fnc_addDamageToUnit;
+			[_unit, 0.25, "body", "stab"] call FUNC(addDamageToUnit);
+			[_unit, 0.25, "head", "stab"] call FUNC(addDamageToUnit);
 		};
 		case 5: {
-			[_unit, 0.5, "body", "stab"] call ace_medical_fnc_addDamageToUnit;
-			[_unit, 0.5, "head", "stab"] call ace_medical_fnc_addDamageToUnit;
+			[_unit, 0.5, "body", "stab"] call FUNC(addDamageToUnit);
+			[_unit, 0.5, "head", "stab"] call FUNC(addDamageToUnit);
 		};
 		default {
-			"dynamicBlur" ppEffectEnable true;
-			"dynamicBlur" ppEffectAdjust [0];
-			"dynamicBlur" ppEffectCommit 10;
+            ppEffectDestroy GVAR(Poison_ppHandle_GUI_BLUR_SCREEN);
+			GVAR(Poison_ppHandle_GUI_BLUR_SCREEN) = nil;
 		};
 	};
 };

@@ -116,6 +116,10 @@ PREP(updatePoisonStage);
 PREP(canCheckPoison);
 PREP(equipGasmask);
 PREP(removeGasmask);
+PREP(checkPoison);
+PREP(contaminationCheck);
+PREP(poison);
+PREP(protectionCheck);
 
 // Networked litter
 PREP(createLitter);

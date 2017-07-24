@@ -21,7 +21,3 @@ params ["_target"];
 
 // Sets Poison Level and Stage to 0
 _target setVariable [QGVAR(poison),0,true];
-_target setVariable [QGVAR(poison),0,true];
-
-// Remove blur effect
-[_target, 0] call ACE_medical_fnc_updatePoisonStage;

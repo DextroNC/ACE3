@@ -34,7 +34,7 @@ _unit setVariable  [QGVAR(bloodVolume), _bloodVolume, _syncValues];
 TRACE_3("ACE_DEBUG",_bloodVolume,_syncValues,_unit);
 // Set variables for synchronizing information across the net
 if (_bloodVolume < 100) then {
-    if (_bloodVolume < 90) then {
+    if (_bloodVolume < 80) then {
         TRACE_4("ACE_DEBUG",_bloodVolume,_unit getVariable QGVAR(hasLostBlood),_syncValues,_unit);
         if (_unit getVariable [QGVAR(hasLostBlood), 0] != 2) then {
             _unit setVariable [QGVAR(hasLostBlood), 2, true];
@@ -75,8 +75,13 @@ if (_painStatus > (_unit getVariable [QGVAR(painSuppress), 0])) then {
     };
 };
 
-if (_bloodVolume < 30) exitWith {
-    [_unit] call FUNC(setDead);
+if (_bloodVolume < 15) exitWith {
+    [_unit, true] call FUNC(setDead);
+};
+
+private _poisonStatus = _unit getVariable [QGVAR(poison), 0];
+if (_poisonStatus > 0) then {
+	[_unit,_poisonStatus] call FUNC(handlePoison);
 };
 
 if ([_unit] call EFUNC(common,isAwake)) then {

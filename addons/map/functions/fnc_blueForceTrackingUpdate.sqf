@@ -1,20 +1,3 @@
-/*
- * Author: ACE-Team
- * Update the blue force tracking.
- *
- * Arguments:
- * None
- *
- * Return Value:
- * None
- *
- * Example:
- * call ACE_map_fnc_blueForceTrackingUpdate
- *
- * Public: No
- */
-
-
 // #define ENABLE_PERFORMANCE_COUNTERS
 #include "script_component.hpp"
 // BEGIN_COUNTER(blueForceTrackingUpdate);
@@ -66,14 +49,50 @@ if (GVAR(BFT_Enabled) and {(!isNil "ACE_player") and {alive ACE_player}}) then {
     _groupsToDrawMarkers = _groupsToDrawMarkers select {!(_x getVariable [QGVAR(hideBlueForceMarker), false])};
 
     {
-        private _markerType = [_x] call EFUNC(common,getMarkerType);
-        private _colour = format ["Color%1", side _x];
+		private _markerDetail;
+		_markerDetail = switch (groupId _x) do {
+		case "HQ": {["SevenR_HQ","SRColorGold",false]};
+		case "PL": {["SevenR_PLo","SRColorGold",false]};
+		case "PL-1": {["SevenR_PLo","SRColorGold",false]};
+		case "PL-2": {["SevenR_PLt","SRColorGold",false]};
+		case "A": {["SevenR_Ao","SRColorGreen",false]};
+		case "A-1": {["SevenR_Ao","SRColorGreen",false]};
+		case "A-2": {["SevenR_At","SRColorGreen",false]};
+		case "B": {["SevenR_Bo","SRColorBrown",false]};
+		case "B-1": {["SevenR_Bo","SRColorBrown",false]};
+		case "B-2": {["SevenR_Bt","SRColorBrown",false]};				
+		case "C": {["SevenR_Co","SRColorPurple",false]};
+		case "C-1": {["SevenR_Co","SRColorPurple",false]};
+		case "C-2": {["SevenR_Ct","SRColorPurple",false]};
+		case "D": {["SevenR_Do","SRColorBlack",false]};
+		case "D-1": {["SevenR_Do","SRColorBlack",false]};
+		case "D-2": {["SevenR_Dt","SRColorBlack",false]};			
+		case "S": {["SevenR_So","SRColorBlue",false]};
+		case "S-1": {["SevenR_So","SRColorBlue",false]};
+		case "S-2": {["SevenR_St","SRColorBlue",false]};		
+		case "R": {["SevenR_Ro","SRColorBlue",false]};
+		case "R-1": {["SevenR_Ro","SRColorBlue",false]};
+		case "R-2": {["SevenR_Rt","SRColorBlue",false]};
+		case "R-3": {["SevenR_Rtr","SRColorBlue",false]};	
+		case "R-4": {["SevenR_Rf","SRColorBlue",false]};	
+		case "F": {["SevenR_Fo","SRColorBlue",false]};
+		case "F-1": {["SevenR_Fo","SRColorBlue",false]};
+		case "F-2": {["SevenR_Ft","SRColorBlue",false]};		
+		case "E": {["SevenR_Eo","SRColorBlue",false]};
+		case "E-1": {["SevenR_Eo","SRColorBlue",false]};
+		case "E-2": {["SevenR_Et","SRColorBlue",false]};	
+		case "H-1": {["SevenR_Ho","SRColorBlue",false]};	
+		case "H-2": {["SevenR_Ht","SRColorBlue",false]};	
+		default {[[_x] call EFUNC(common,getMarkerType),"SRColorBlue",true]}; 
+		};
+		
 
         private _marker = createMarkerLocal [format ["ACE_BFT_%1", _forEachIndex], [(getPos leader _x) select 0, (getPos leader _x) select 1]];
-        _marker setMarkerTypeLocal _markerType;
-        _marker setMarkerColorLocal _colour;
-        _marker setMarkerTextLocal (groupId _x);
-
+        _marker setMarkerTypeLocal (_markerDetail select 0);
+        _marker setMarkerColorLocal (_markerDetail select 1);
+		if (_markerDetail select 2) then {
+			_marker setMarkerTextLocal (groupId _x);
+		};
         GVAR(BFT_markers) pushBack _marker;
     } forEach _groupsToDrawMarkers;
 };

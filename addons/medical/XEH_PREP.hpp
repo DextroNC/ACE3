@@ -87,6 +87,8 @@ PREP(treatmentAdvanced_medicationLocal);
 PREP(treatmentAdvanced_surgicalKit_onProgress);
 PREP(treatmentBasic_bloodbag);
 PREP(treatmentBasic_bloodbagLocal);
+PREP(treatmentBasic_atropine);
+PREP(treatmentBasic_atropineLocal);
 PREP(treatmentBasic_epipen);
 PREP(treatmentBasic_morphine);
 PREP(treatmentBasic_morphineLocal);
@@ -109,6 +111,11 @@ PREP(moduleAssignMedicalVehicle);
 PREP(moduleAssignMedicalFacility);
 PREP(copyDeadBody);
 PREP(unconsciousPFH);
+PREP(handlePoison);
+PREP(updatePoisonStage);
+PREP(canCheckPoison);
+PREP(equipGasmask);
+PREP(removeGasmask);
 
 // Networked litter
 PREP(createLitter);

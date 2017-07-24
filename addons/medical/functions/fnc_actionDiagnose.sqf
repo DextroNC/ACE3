@@ -37,6 +37,13 @@ if (_target getVariable[QGVAR(hasLostBlood), 0] > 0) then {
     _genericMessages pushBack LSTRING(noBloodloss);
 };
 
+if ([_caller] call FUNC(isMedic)) then {
+	_stringBV =  str (round (_target getVariable[QGVAR(bloodVolume), 100])) + "% Blood Level.";
+	 _genericMessages pushBack _stringBV;
+	_stringP = "Stage " + str (round (_target getVariable[QGVAR(poisonStage), 0])) + " poisoning.";
+	 _genericMessages pushBack _stringP;
+};
+
 if (alive _target) then {
     if (_target getVariable[QGVAR(hasPain), false]) then {
         _genericMessages pushBack LSTRING(inPain);

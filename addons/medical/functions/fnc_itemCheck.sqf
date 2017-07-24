@@ -32,6 +32,22 @@ while {({_x == "FirstAidKit"} count items _unit) > 0} do {
     };
 };
 
+while {({_x == "SR_PAK"} count items _unit) > 0} do {
+    _unit removeItem "SR_PAK";
+	_unit addItem "ACE_fieldDressing";
+	_unit addItem "ACE_fieldDressing";
+	_unit addItem "ACE_fieldDressing";
+	_unit addItem "ACE_fieldDressing";
+	_unit addItem "ACE_fieldDressing";
+	_unit addItem "ACE_morphine";
+	_unit addItem "ACE_morphine";
+	_unit addItem "ACE_fieldDressing";
+	_unit addItem "ACE_fieldDressing";
+	_unit addItem "ACE_fieldDressing";
+	_unit addItem "ACE_fieldDressing";
+	_unit addItem "ACE_fieldDressing";
+};
+
 while {({_x == "Medikit"} count items _unit) > 0} do {
     _unit removeItem "Medikit";
     if (GVAR(level) >= 2) then {
@@ -51,3 +67,71 @@ while {({_x == "Medikit"} count items _unit) > 0} do {
         _unit addItemToBackpack "ACE_bloodIV";
     };
 };
+
+while {({_x == "SR_MAK"} count items _unit) > 0} do {
+	if (_unit getVariable ["ace_medical_medicClass", 0] == 0) exitWith {};
+	_unit removeItem "SR_MAK";
+	_unit addItemToBackpack "ACE_fieldDressing";
+	_unit addItemToBackpack "ACE_fieldDressing";
+	_unit addItemToBackpack "ACE_fieldDressing";
+	_unit addItemToBackpack "ACE_fieldDressing";
+	_unit addItemToBackpack "ACE_fieldDressing";
+	_unit addItemToBackpack "ACE_morphine";
+	_unit addItemToBackpack "ACE_morphine";
+	_unit addItemToBackpack "ACE_morphine";
+	_unit addItemToBackpack "ACE_epinephrine";
+	_unit addItemToBackpack "ACE_epinephrine";
+	_unit addItemToBackpack "ACE_epinephrine";
+	_unit addItemToBackpack "ACE_bloodIV_500";
+	_unit addItemToBackpack "ACE_bloodIV_500";
+	_unit addItemToBackpack "ACE_fieldDressing";
+	_unit addItemToBackpack "ACE_fieldDressing";
+	_unit addItemToBackpack "ACE_fieldDressing";
+	_unit addItemToBackpack "ACE_fieldDressing";
+	_unit addItemToBackpack "ACE_fieldDressing";
+	_unit addItemToBackpack "ACE_morphine";
+	_unit addItemToBackpack "ACE_morphine";
+	_unit addItemToBackpack "ACE_epinephrine";
+	_unit addItemToBackpack "ACE_epinephrine";
+	_unit addItemToBackpack "ACE_bloodIV";
+	_unit addItemToBackpack "ACE_bloodIV_500";	
+};
+
+while {({_x == "SR_Bandage_Pack"} count items _unit) > 0} do {
+	if (_unit getVariable ["ace_medical_medicClass", 0] == 0) exitWith {};
+	_unit removeItem "SR_Bandage_Pack";
+	_unit addItemToBackpack "ACE_fieldDressing";
+	_unit addItemToBackpack "ACE_fieldDressing";
+	_unit addItemToBackpack "ACE_fieldDressing";
+	_unit addItemToBackpack "ACE_fieldDressing";
+	_unit addItemToBackpack "ACE_fieldDressing";
+	_unit addItemToBackpack "ACE_fieldDressing";
+	_unit addItemToBackpack "ACE_fieldDressing";
+	_unit addItemToBackpack "ACE_fieldDressing";
+	_unit addItemToBackpack "ACE_fieldDressing";
+	_unit addItemToBackpack "ACE_fieldDressing";
+};
+
+while {({_x == "SR_Medicine_Pack"} count items _unit) > 0} do {
+	if (_unit getVariable ["ace_medical_medicClass", 0] == 0) exitWith {};
+	_unit removeItem "SR_Medicine_Pack";
+	_unit addItemToBackpack "ACE_morphine";
+	_unit addItemToBackpack "ACE_morphine";
+	_unit addItemToBackpack "ACE_morphine";
+	_unit addItemToBackpack "ACE_epinephrine";
+	_unit addItemToBackpack "ACE_epinephrine";
+	_unit addItemToBackpack "ACE_epinephrine";
+	_unit addItemToBackpack "ACE_morphine";
+	_unit addItemToBackpack "ACE_morphine";
+	_unit addItemToBackpack "ACE_epinephrine";
+	_unit addItemToBackpack "ACE_epinephrine";
+};
+
+while {({_x == "SR_BloodIV_Pack"} count items _unit) > 0} do {
+	if (_unit getVariable ["ace_medical_medicClass", 0] == 0) exitWith {};
+	_unit removeItem "SR_BloodIV_Pack";
+	_unit addItemToBackpack "ACE_bloodIV_500";
+	_unit addItemToBackpack "ACE_bloodIV";
+	_unit addItemToBackpack "ACE_bloodIV_500";
+};
+

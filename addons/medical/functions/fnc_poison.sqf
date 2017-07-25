@@ -29,7 +29,7 @@ params ["_unit","_trigger"];
 	_args params ["_unit","_trigger"];
 	
 	// Check if unit still in Zone
-	if (_unit inArea _trigger;) then
+	if (_unit inArea _trigger) then
 		{
 			// Variable to Point presence in Contamintad Area
 			_unit setVariable [QGVAR(contaminatedArea),true,true];

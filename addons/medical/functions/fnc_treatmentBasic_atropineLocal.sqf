@@ -20,7 +20,7 @@
 params ["_medic","_target"];
 
 // Sets Poison Level and Stage to 0
-_target setVariable [QGVAR(poison),0,true];
+_target setVariable [QGVAR(poisonLevel),0,true];
 
 // Calls handlePoison to update effects
-[_unit,0] call FUNC(handlePoison);
+[_target, 0] call FUNC(handlePoison);

@@ -20,13 +20,7 @@
 params ["_unit","_trigger"];
 
 // Player in Area and Unprotected
-if ((_unit inArea _trigger) && !params ["_unit","_trigger"];
-
-if ((_unit inArea _trigger) && !(goggles _unit isEqualTo GVAR(gasMask)) then {
-	true
-} else {
-	false
-};) then {
+if ((_unit inArea _trigger) && !(goggles _unit isEqualTo GVAR(gasMask))) then {
 	true
 } else {
 	false

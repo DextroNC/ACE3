@@ -542,13 +542,13 @@ class ACE_Equipment {
 	};
 	class SR_EquipGasmask {
 		displayName = "Equip Gasmask";
-		condition = QUOTE(!([_player] call DFUNC(protectionCheck)));
+		condition = "!(_player getVariable ['ace_medical_poisonProtection',false])";
 		icon = QPATHTOF(UI\icons\gasmask.paa);
 		statement = QUOTE([_player] call DFUNC(equipGasmask));	
 	};
 	class SR_RemoveGasmask {
 		displayName = "Remove Gasmask";
-		condition = QUOTE([_player] call DFUNC(protectionCheck));
+		condition = "_player getVariable ['ace_medical_poisonProtection',false]";
 		icon = QPATHTOF(UI\icons\gasmask.paa);
 		statement = QUOTE([_player] call DFUNC(removeGasmask));	
 	};

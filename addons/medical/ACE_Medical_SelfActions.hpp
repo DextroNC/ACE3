@@ -538,11 +538,11 @@ class ACE_Equipment {
 		displayName = "Check Environment";
 		condition = QUOTE([_player] call DFUNC(canCheckPoison));
 		icon = QPATHTOF(UI\icons\poison.paa);
-		statement = QUOTE([_player] call DFUNC(checkPoison));
+		statement = QUOTE([_player] call DFUNC(poisonCheck));
 	};
 	class SR_EquipGasmask {
 		displayName = "Equip Gasmask";
-		condition = QUOTE(![_player] call DFUNC(protectionCheck));
+		condition = QUOTE(!([_player] call DFUNC(protectionCheck)));
 		icon = QPATHTOF(UI\icons\gasmask.paa);
 		statement = QUOTE([_player] call DFUNC(equipGasmask));	
 	};

@@ -79,7 +79,8 @@ if (_bloodVolume < 15) exitWith {
     [_unit, true] call FUNC(setDead);
 };
 
-private _poisonStatus = _unit getVariable [QGVAR(poison), 0];
+// if unit is poisoned, checks stage and inits effects
+private _poisonStatus = _unit getVariable [QGVAR(poisonLevel), 0];
 if (_poisonStatus > 0) then {
 	[_unit,_poisonStatus] call FUNC(handlePoison);
 };

@@ -10,7 +10,7 @@
  * Can be contaminated <BOOL>
  *
  * Example:
- * [player] call ace_medical_fnc_contaminationCheck
+ * [player,thisTrigger] call ace_medical_fnc_contaminationCheck
  *
  * Public: Yes
  */
@@ -19,4 +19,8 @@
 
 params ["_unit","_trigger"];
 
-if ([_unit,_trigger] call CBA_fnc_inArea && (![player] call FUNC(protectionCheck))) then {true} else {false};
+if ((_unit inArea _trigger) && !(goggles _unit isEqualTo GVAR(gasMask)) then {
+	true
+} else {
+	false
+};

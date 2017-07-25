@@ -7,7 +7,7 @@
  * 1: Poison Level <NUMBER>
  *
  * Return Value:
- * New Stage reached
+ * Poison Stage
  *
  * Example:
  * [bob, 25] call ACE_medical_fnc_updatePoisonStage
@@ -18,33 +18,32 @@
 #include "script_component.hpp"
 
 params ["_unit","_level"];
-
-
-private _stageCurrent = _unit getVariable [QGVAR(poisonStage), 0];
-private _stageNew = 0;
+private _stage = 0;
 
 if (_level == 0) then {
-	_stageNew = 0;
+	_stage = 0;
 };
-if (_level > 1) then {
-	_stageNew = 1;
+if (_level > 0) then {
+	_stage = 1;
 };
-if (_level > 25) then {
-	_stageNew = 2;
+if (_level >= 20) then {
+	_stage = 2;
 };
-if (_level > 50) then {
-	_stageNew = 3;
+if (_level >= 30) then {
+	_stage = 3;
 };
-if (_level > 75) then {
-	_stageNew = 4;
+if (_level >= 40) then {
+	_stage = 4;
 };
-if (_level > 100) then {
-	_stageNew = 5;
+if (_level >= 60) then {
+	_stage = 5;
+};
+if (_level >= 70) then {
+	_stage = 6;
+};
+if (_level >= 90) then {
+	_stage = 7;
 };
 
-if (_stageCurrent != _stageNew) then {
-	_unit setVariable [QGVAR(poisonStage), _stageNew, true];
-};
-
-_stageNew
+_stage
 

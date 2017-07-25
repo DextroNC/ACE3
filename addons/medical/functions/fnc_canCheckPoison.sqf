@@ -1,9 +1,9 @@
 /*
  * Author: Glowbal
- * Check if the treatment action can be performed.
+ * Check if unit is able to check if present in contaminated Area
  *
  * Arguments:
- * 0: The caller <OBJECT>
+ * 0: Unit <OBJECT>
  *
  * Return Value:
  * Can Check <BOOL>
@@ -16,11 +16,11 @@
 
 #include "script_component.hpp"
 
-params ["_caller"];
+params ["_unit"];
 
 if (GVAR(poisonDetection)== 0) exitWith {true};
 if (GVAR(poisonDetection)== 2) exitWith {false};
 if (GVAR(poisonDetection)== 1) exitWith {
-	if ([_caller] call EFUNC(medical,isMedic)) then {true} else {false};
+	if ([_unit] call EFUNC(medical,isMedic)) then {true} else {false};
 };
 

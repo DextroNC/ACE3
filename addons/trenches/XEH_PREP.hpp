@@ -14,3 +14,4 @@ PREP(placeConfirm);
 PREP(placeTrench);
 PREP(removeTrench);
 PREP(setTrenchPlacement);
+PREP(canConstruct);

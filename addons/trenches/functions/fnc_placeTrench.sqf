@@ -22,6 +22,8 @@ params ["_unit", "_trenchClass"];
 private _noGeoModel = getText (configFile >> "CfgVehicles" >> _trenchClass >> QGVAR(noGeoClass));
 if(_noGeoModel == "") then {_noGeoModel = _trenchClass;};
 
+private _offset = getNumber (configFile >> "CfgVehicles" >> _trenchClass >> QGVAR(offset));
+
 GVAR(trenchClass) = _trenchClass;
 GVAR(trenchPlacementData) = getArray (configFile >> "CfgVehicles" >> _trenchClass >> QGVAR(placementData));
 TRACE_1("",GVAR(trenchPlacementData));
@@ -31,13 +33,16 @@ TRACE_1("",GVAR(trenchPlacementData));
 
 // create the trench
 private _trench = createVehicle [_noGeoModel, [0, 0, 0], [], 0, "NONE"];
-
+//_trench setDir _offset;
 GVAR(trench) = _trench;
+
+// Disable Collision
+GVAR(trench) disableCollisionWith _unit; 
 
 // prevent collisions with trench
 [QEGVAR(common,enableSimulationGlobal), [_trench, false]] call CBA_fnc_serverEvent;
 
-GVAR(digDirection) = 0;
+GVAR(digDirection) = _offset;
 
 // pfh that runs while the dig is in progress
 GVAR(digPFH) = [{

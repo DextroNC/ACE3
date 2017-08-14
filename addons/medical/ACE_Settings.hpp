@@ -324,5 +324,11 @@ class ACE_Settings {
         value = 1;
         values[] = {"Anyone", "Medics only", "Nobody"};
     };
-	
+	class GVAR(bloodLevelCap) {
+        category = CSTRING(Category_Medical);
+        displayName = "Blood Level Cap";
+        description = "Minimum Blood Level required to stay in revive instead of dying.";
+		typeName = "SCALAR";
+        value = 15;
+    };
 };

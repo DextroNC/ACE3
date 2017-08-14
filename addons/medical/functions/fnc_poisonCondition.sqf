@@ -25,3 +25,4 @@ if ((_unit inArea _trigger) && !(goggles _unit isEqualTo GVAR(gasMask))) then {
 } else {
 	false
 };
+

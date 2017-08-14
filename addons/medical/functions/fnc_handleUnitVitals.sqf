@@ -75,7 +75,7 @@ if (_painStatus > (_unit getVariable [QGVAR(painSuppress), 0])) then {
     };
 };
 
-if (_bloodVolume < 15) exitWith {
+if (_bloodVolume < GVAR(bloodLevelCap)) exitWith {
     [_unit, true] call FUNC(setDead);
 };
 

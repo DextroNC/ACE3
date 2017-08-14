@@ -71,6 +71,7 @@ class CfgAmmo {
 
     class SLAMDirectionalMine_Wire_Ammo: DirectionalBombBase {
         indirectHitRange = 20;
+		explosionAngle = 60;
         GVAR(explodeOnDefuseChance) = 1;
         GVAR(magazine) = "SLAMDirectionalMine_Wire_Mag";
         GVAR(size) = 0;
@@ -85,8 +86,8 @@ class CfgAmmo {
     class ACE_SLAMDirectionalMine_Magnetic_Ammo: SLAMDirectionalMine_Wire_Ammo {
         mineTrigger = "ACE_MagneticTrigger";
         GVAR(explodeOnDefuseChance) = 0;
-        explosionAngle = 360;
-        indirectHitRange = 1;
+        explosionAngle = 270;
+        indirectHitRange = 5;
         mineInconspicuousness = 25;
         icon = "iconExplosiveGP";
     };

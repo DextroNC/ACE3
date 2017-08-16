@@ -44,9 +44,11 @@ GVAR(trench) disableCollisionWith _unit;
 
 GVAR(digDirection) = _offset;
 
+private _cost = getNumber (configFile >> "CfgVehicles" >> GVAR(trenchClass) >> QGVAR(trenchCosts));
+
 // pfh that runs while the dig is in progress
 GVAR(digPFH) = [{
-    (_this select 0) params ["_unit", "_trench"];
+    (_this select 0) params ["_unit", "_trench","_cost"];
 
     // Cancel if the helper object is gone
     if (isNull _trench) exitWith {
@@ -54,14 +56,15 @@ GVAR(digPFH) = [{
     };
 
     // Cancel if the place is no longer suitable
-    if !([_unit] call FUNC(canDigTrench)) exitWith {
-        [_unit] call FUNC(placeCancel);
-    };
+	if (_cost == 0) then {
+		if !([_unit] call FUNC(canDigTrench)) exitWith {
+			[_unit] call FUNC(placeCancel);
+		};
+	};
 
     // Update trench position
     GVAR(trenchPlacementData) params ["_dx", "_dy", "_offset"];
     private _basePos = eyePos _unit vectorAdd ([sin getDir _unit, +cos getDir _unit, 0] vectorMultiply 1.0);
-
     private _angle = (GVAR(digDirection) + getDir _unit);
 
     // _v1 forward from the player, _v2 to the right, _v3 points away from the ground
@@ -92,7 +95,7 @@ GVAR(digPFH) = [{
     _trench setVectorDirAndUp [_v1, _v3];
     GVAR(trenchPos) = _basePos;
 
-}, 0, [_unit, _trench]] call CBA_fnc_addPerFrameHandler;
+}, 0, [_unit, _trench,_cost]] call CBA_fnc_addPerFrameHandler;
 
 // add mouse button action and hint
 [localize LSTRING(ConfirmDig), localize LSTRING(CancelDig), localize LSTRING(ScrollAction)] call EFUNC(interaction,showMouseHint);

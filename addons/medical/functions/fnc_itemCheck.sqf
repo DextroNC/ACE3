@@ -135,3 +135,17 @@ while {({_x == "SR_BloodIV_Pack"} count items _unit) > 0} do {
 	_unit addItemToBackpack "ACE_bloodIV_500";
 };
 
+while {({_x == "SR_Atropine_Pack"} count items _unit) > 0} do {
+	if (_unit getVariable ["ace_medical_medicClass", 0] == 0) exitWith {};
+	_unit removeItem "SR_Atropine_Pack";
+	_unit addItemToBackpack "ACE_atropine";
+	_unit addItemToBackpack "ACE_atropine";
+	_unit addItemToBackpack "ACE_atropine";
+	_unit addItemToBackpack "ACE_atropine";
+	_unit addItemToBackpack "ACE_atropine";
+	_unit addItemToBackpack "ACE_atropine";
+	_unit addItemToBackpack "ACE_atropine";
+	_unit addItemToBackpack "ACE_atropine";
+	_unit addItemToBackpack "ACE_atropine";
+	_unit addItemToBackpack "ACE_atropine";
+};

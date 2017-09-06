@@ -13,6 +13,5 @@
  * Public: No
  */
 #include "script_component.hpp"
-
-hint format ["%1 Resources available", QGVAR(trenchSupplies)];
+hint format ["%1 Resources available",GVAR(trenchSupplies)];
 

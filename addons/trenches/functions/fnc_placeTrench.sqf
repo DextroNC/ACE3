@@ -64,7 +64,7 @@ GVAR(digPFH) = [{
 
     // Update trench position
     GVAR(trenchPlacementData) params ["_dx", "_dy", "_offset"];
-    private _basePos = eyePos _unit vectorAdd ([sin getDir _unit, +cos getDir _unit, 0] vectorMultiply 1.0);
+    private _basePos = eyePos _unit vectorAdd ([sin getDir _unit, +cos getDir _unit, 0] vectorMultiply 2.0);
     private _angle = (GVAR(digDirection) + getDir _unit);
 
     // _v1 forward from the player, _v2 to the right, _v3 points away from the ground

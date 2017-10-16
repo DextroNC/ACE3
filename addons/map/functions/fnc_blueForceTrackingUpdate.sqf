@@ -49,7 +49,7 @@ if (GVAR(BFT_Enabled) and {(!isNil "ACE_player") and {alive ACE_player}}) then {
     _groupsToDrawMarkers = _groupsToDrawMarkers select {!(_x getVariable [QGVAR(hideBlueForceMarker), false])};
 
     {
-		private _markerDetail;
+		private "_markerDetail";
 		_markerDetail = switch (groupId _x) do {
 		case "HQ": {["SevenR_HQ","SRColorGold",false]};
 		case "PL": {["SevenR_PLo","SRColorGold",false]};
@@ -86,7 +86,19 @@ if (GVAR(BFT_Enabled) and {(!isNil "ACE_player") and {alive ACE_player}}) then {
 		default {[[_x] call EFUNC(common,getMarkerType),"SRColorBlue",true]}; 
 		};
 		
-
+		// SGT Marker
+		if ((groupId _x) in ["PL","PL-1","PL-2"]) then {
+			{
+				if ((rank _x) isEqualTo "SERGEANT") then {
+					private _sgtm = createMarkerLocal [format ["ACE_BFT_SGT_%1", _forEachIndex],[(getPos _x) select 0, (getPos _x) select 1]];
+					_sgtm setMarkerTypeLocal "SevenR_FTL";
+					_sgtm setMarkerColorLocal "ColorWhite";
+					_sgtm setMarkerTextLocal "SGT";
+					GVAR(BFT_markers) pushBack _sgtm;
+				};
+			}forEach units _x;
+		};
+		
         private _marker = createMarkerLocal [format ["ACE_BFT_%1", _forEachIndex], [(getPos leader _x) select 0, (getPos leader _x) select 1]];
         _marker setMarkerTypeLocal (_markerDetail select 0);
         _marker setMarkerColorLocal (_markerDetail select 1);
@@ -96,5 +108,7 @@ if (GVAR(BFT_Enabled) and {(!isNil "ACE_player") and {alive ACE_player}}) then {
         GVAR(BFT_markers) pushBack _marker;
     } forEach _groupsToDrawMarkers;
 };
-
 // END_COUNTER(blueForceTrackingUpdate);
+
+
+

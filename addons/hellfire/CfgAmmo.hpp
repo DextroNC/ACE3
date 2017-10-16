@@ -15,7 +15,7 @@ class CfgAmmo {
         indirectHitRange = 4.5;
         effectsMissile = "missile2";
 
-        irLock = 0;
+        irLock = 1;
         laserLock = 0;
         manualControl = 0;
         maxSpeed = 450;
@@ -27,7 +27,7 @@ class CfgAmmo {
         EGVAR(rearm,caliber) = 178;
 
         class ace_missileguidance {
-            enabled = 1;
+            enabled = 0;
 
             minDeflection = 0.0005;      // Minium flap deflection for guidance
             maxDeflection = 0.01;       // Maximum flap deflection for guidance
@@ -64,7 +64,7 @@ class CfgAmmo {
         indirectHitRange = 10;
         explosionEffects = "BombExplosion";
         class ace_missileguidance: ace_missileguidance {
-            enabled = 1; // Missile Guidance must be explicitly enabled
+            enabled = 0; // Missile Guidance must be explicitly enabled
         };
     };
 };

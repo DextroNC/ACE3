@@ -22,7 +22,7 @@ params ["_caller","_target"];
 if (_target getVariable [QGVAR(inReviveState), false]) then {
     private _reviveStartTime = _target getVariable [QGVAR(reviveStartTime),0];
     if (_reviveStartTime > 0) then {
-        _target setVariable [QGVAR(reviveStartTime), (_reviveStartTime + random(20)) min CBA_missionTime];
+        _target setVariable [QGVAR(reviveStartTime), (_reviveStartTime + random [120,180,240]) min CBA_missionTime];
     };
 };
 

@@ -5,14 +5,12 @@
  * Arguments:
  * 0: The medic <OBJECT>
  * 1: The patient <OBJECT>
- * 3: Treatment classname <STRING>
- * 2: Selection Name <STRING>
  *
  * Return Value:
  * None
  *
  * Example:
- * [bob, kevin, "selection", "classname"] call ACE_medical_fnc_treatmentBasic_morphine
+ * [bob, kevin] call ACE_medical_fnc_treatmentBasic_atropine
  *
  * Public: No
  */
@@ -23,7 +21,7 @@
 params ["_caller", "_target"];
 
 if (local _target) then {
-    [QGVAR(treatmentBasic_morphineLocal), [_target]] call CBA_fnc_localEvent;
+    [QGVAR(treatmentBasic_atropineLocal), [_caller,_target]] call CBA_fnc_localEvent;
 } else {
-    [QGVAR(treatmentBasic_morphineLocal), [_target], _target] call CBA_fnc_targetEvent;
+    [QGVAR(treatmentBasic_atropineLocal), [_caller,_target], _target] call CBA_fnc_targetEvent;
 };

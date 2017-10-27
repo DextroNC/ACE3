@@ -57,6 +57,18 @@ class ACE_Medical_Actions {
             litter[] = { {"All", "", {"ACE_MedicalLitter_epinephrine"}} };
             treatmentLocations[] = {QGVAR(useLocation_basicEpi)};
         };
+	   class Atropine: Bandage {
+            displayName = CSTRING(Inject_Atropine);
+            displayNameProgress = CSTRING(Injecting_Atropine);
+			treatmentTime = 3;
+            allowedSelections[] = {"hand_l", "hand_r", "leg_l", "leg_r"};
+            allowSelfTreatment = 1;
+            category = "medication";
+            items[] = {"ACE_atropine"};
+			callbackSuccess = QUOTE(DFUNC(treatmentBasic_atropine));
+			animationCaller = "AinvPknlMstpSnonWnonDnon_medic1";
+            litter[] = { {"All", "", {"ACE_MedicalLitter_atropine"}} };
+        };
         class BloodIV: Bandage {
             displayName = CSTRING(Transfuse_Blood);
             displayNameProgress = CSTRING(Transfusing_Blood);
@@ -64,7 +76,7 @@ class ACE_Medical_Actions {
             allowSelfTreatment = 0;
             category = "advanced";
             requiredMedic = 1;
-            treatmentTime = 20;
+            treatmentTime = 10;
             items[] = {"ACE_bloodIV"};
             // callbackSuccess = QUOTE(DFUNC(treatmentBasic_bloodbag));
             callbackSuccess = QUOTE(DFUNC(treatmentIV));
@@ -121,7 +133,7 @@ class ACE_Medical_Actions {
             allowedSelections[] = {"body"};
             allowSelfTreatment = 0;
             requiredMedic = 0;
-            treatmentTime = 15;
+            treatmentTime = 10;
             items[] = {};
             condition = QUOTE(!([(_this select 1)] call ace_common_fnc_isAwake) && GVAR(enableRevive)>0);
             callbackSuccess = QUOTE(DFUNC(treatmentAdvanced_CPR));

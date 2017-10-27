@@ -69,4 +69,11 @@ class ACE_Settings {
         displayName = CSTRING(DefaultChannel_DisplayName);
         description = CSTRING(DefaultChannel_Description);
     };
+	class GVAR(BFT_FT_Markers) {
+        category = CSTRING(Module_DisplayName);
+        value = 1;
+        typeName = "BOOL";
+        displayName = "Fire Team BFT Marker";
+        description = "Markers for Fire Team Leaders and Platoon Sergeant (BFT)";
+    };
 };

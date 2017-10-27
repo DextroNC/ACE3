@@ -532,3 +532,24 @@ class Medical {
         };
     };
 };
+class ACE_Equipment {
+	class SR_CheckEnvironment
+	{
+		displayName = "Check Environment";
+		condition = QUOTE([_player] call DFUNC(canCheckPoison));
+		icon = QPATHTOF(UI\icons\poison.paa);
+		statement = QUOTE([_player] call DFUNC(poisonCheck));
+	};
+	class SR_EquipGasmask {
+		displayName = "Equip Gasmask";
+		condition = "!(_player getVariable ['ace_medical_poisonProtection',false])";
+		icon = QPATHTOF(UI\icons\gasmask.paa);
+		statement = QUOTE([_player] call DFUNC(equipGasmask));	
+	};
+	class SR_RemoveGasmask {
+		displayName = "Remove Gasmask";
+		condition = "_player getVariable ['ace_medical_poisonProtection',false]";
+		icon = QPATHTOF(UI\icons\gasmask.paa);
+		statement = QUOTE([_player] call DFUNC(removeGasmask));	
+	};
+};

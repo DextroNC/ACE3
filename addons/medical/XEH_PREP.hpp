@@ -109,6 +109,16 @@ PREP(moduleAssignMedicalVehicle);
 PREP(moduleAssignMedicalFacility);
 PREP(copyDeadBody);
 PREP(unconsciousPFH);
+PREP(treatmentBasic_atropine);
+PREP(treatmentBasic_atropineLocal);
+PREP(handlePoison);
+PREP(updatePoisonStage);
+PREP(canCheckPoison);
+PREP(poisonCheck);
+PREP(equipGasmask);
+PREP(removeGasmask);
+PREP(poisonCondition);
+PREP(poison);
 
 // Networked litter
 PREP(createLitter);

@@ -291,5 +291,34 @@ class ACE_Settings {
         description = CSTRING(MedicalSettings_delayUnconCaptive_Description);
         typeName = "SCALAR";
         value = 3;
+    };    
+	class GVAR(gasMask) {
+        category = CSTRING(Category_Medical);
+        displayName = "Gasmask";
+        description = "Classname of the Gasmask.";
+        typeName = "STRING";
+        value = "Mask_M50";
+    };
+	class GVAR(poisonKit) {
+        category = CSTRING(Category_Medical);
+        displayName = "Poison Kit";
+        description = "Upon first Gasmask equip player receives 1 Atropine.";
+        typeName = "BOOL";
+        value = true;
+    };
+	class GVAR(poisonDetection) {
+        category = CSTRING(Category_Medical);
+        displayName = "Poison Detection";
+        description = "Who can detect if they are still within a Poisoned Area";
+		typeName = "SCALAR";
+        value = 1;
+        values[] = {"Anyone", "Medics only", "Nobody"};
+    };
+	class GVAR(bloodLevelCap) {
+        category = CSTRING(Category_Medical);
+        displayName = "Blood Level Cap";
+        description = "Minimum Blood Level required to stay in revive instead of dying.";
+		typeName = "SCALAR";
+        value = 15;
     };
 };

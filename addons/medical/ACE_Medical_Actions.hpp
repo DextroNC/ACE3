@@ -106,17 +106,6 @@ class ACE_Torso {
         priority = 2;
         enableInside = 1;
     };
-    class TriageCard {
-        displayName = CSTRING(Actions_TriageCard);
-        distance = 2.0;
-        condition = "true";
-        statement = QUOTE([ARR_2(_target, true)] call DFUNC(displayTriageCard));
-        EXCEPTIONS
-        showDisabled = 1;
-        priority = 2;
-        enableInside = 1;
-        icon = QPATHTOF(UI\icons\triageCard.paa);
-    };
     class Diagnose {
         displayName = CSTRING(Actions_Diagnose);
         distance = 5.0;

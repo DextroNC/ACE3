@@ -20,7 +20,7 @@ class CfgWeapons {
         model = "\A3\Structures_F_EPB\Items\Military\Ammobox_rounds_F.p3d";
         picture = QPATHTOF(ui\const_tool.paa);
         scope = 2;
-        class ItemInfo: InventoryItem_Base_F {
+        class ItemInfo: CBA_MiscItem_ItemInfo  {
             mass = 60;
         };
     };

@@ -4,7 +4,7 @@ class ACE_Settings {
         displayName = CSTRING(DisableNVGsWithSights_DisplayName);
         description = CSTRING(DisableNVGsWithSights_description);
         typeName = "BOOL";
-        value = 0;
+        value = 1;
     };
     class GVAR(fogScaling) {
         category = CSTRING(Category);

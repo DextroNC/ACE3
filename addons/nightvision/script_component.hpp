@@ -23,8 +23,8 @@
 #define ST_NVG_AIR_FOG_MULTIPLIER 0.5
 
 // Increase blur when looking down sights
-#define ST_NVG_CAMERA_BLUR_SIGHTS_RIFLE 6
-#define ST_NVG_CAMERA_BLUR_SIGHTS_PISTOL 2
+#define ST_NVG_CAMERA_BLUR_SIGHTS_RIFLE 0
+#define ST_NVG_CAMERA_BLUR_SIGHTS_PISTOL 0
 
 #define ST_NVG_MINFOG 0.2 
 #define ST_NVG_MAXFOG 0.3

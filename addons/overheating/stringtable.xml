@@ -1,6 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACE">
     <Package name="Overheating">
+        <Key ID="STR_ACE_Overheating_DisplayName">
+            <English>Overheating</English>
+            <German>Heißlaufen</German>
+            <Italian>Surriscaldamento</Italian>
+            <Chinese>過熱</Chinese>
+            <Chinesesimp>过热</Chinesesimp>
+            <Japanese>過熱</Japanese>
+        </Key>
         <Key ID="STR_ACE_Overheating_DisplayTextOnJam_displayName">
             <English>Display text on jam</English>
             <German>Zeige Text bei Ladehemmung</German>
@@ -226,7 +234,7 @@
             <Hungarian>Megakadt a fegyver!</Hungarian>
             <Portuguese>Arma travada!</Portuguese>
             <Italian>Arma inceppata!</Italian>
-            <Japanese>武器が詰まった！</Japanese>
+            <Japanese>武器が詰まった!</Japanese>
             <Korean>탄걸림!</Korean>
             <Chinesesimp>武器卡弹!</Chinesesimp>
             <Chinese>武器卡彈!</Chinese>

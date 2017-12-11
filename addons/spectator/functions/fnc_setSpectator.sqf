@@ -101,6 +101,7 @@ if (_set) then {
 // Hide/Unhide the player if enabled and alive
 if (alive player) then {
     private _hidden = (_hide && _set);
+    TRACE_1("",_hidden);
 
     // Ignore damage (vanilla and ace_medical)
     player allowDamage !_hidden;
@@ -110,8 +111,13 @@ if (alive player) then {
     [player, _hidden, QGVAR(isSet), side group player] call EFUNC(common,switchToGroupSide);
 
     // Ghosts can't talk
-    [player, QGVAR(isSet)] call EFUNC(common,hideUnit);
-    [player, QGVAR(isSet)] call EFUNC(common,muteUnit);
+    if (_hidden) then {
+        [player, QGVAR(isSet)] call EFUNC(common,hideUnit);
+        [player, QGVAR(isSet)] call EFUNC(common,muteUnit);
+    } else {
+        [player, QGVAR(isSet)] call EFUNC(common,unhideUnit);
+        [player, QGVAR(isSet)] call EFUNC(common,unmuteUnit);
+    };
 };
 
 // Reset interruptions

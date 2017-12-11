@@ -1104,6 +1104,7 @@
             <Chinesesimp>只有维修专精兵</Chinesesimp>
             <Chinese>只有維修專精兵</Chinese>
             <Polish>Tylko zaawansowani mechanicy</Polish>
+            <Korean>고급 정비공만</Korean>
         </Key>
         <Key ID="STR_ACE_Repair_engineerSetting_Wheel_name">
             <English>Allow Wheel</English>
@@ -1429,6 +1430,7 @@
             <Chinesesimp>专精</Chinesesimp>
             <Chinese>專精</Chinese>
             <Polish>Zaaw. mechanik</Polish>
+            <Korean>고급 정비공</Korean>
         </Key>
         <Key ID="STR_ACE_Repair_AssignEngineerRole_Module_Description">
             <English>Assign one or multiple units as an engineer</English>
@@ -1789,6 +1791,23 @@
             <Italian>Il motore deve essere spento per poter riparare</Italian>
             <Chinesesimp>引擎必须先关闭才能开始进行维修</Chinesesimp>
             <Chinese>引擎必須先關閉才能開始進行維修</Chinese>
+        </Key>
+
+        <Key ID="STR_ACE_Repair_editorLoadedTracks">
+            <English>Spare Tracks</English>
+            <German>Ersatzketten</German>
+        </Key>
+        <Key ID="STR_ACE_Repair_editorLoadedTracks_tooltip">
+            <English>Number of spare tracks in cargo.</English>
+            <German>Anzahl der Ersatzketten im Laderaum.</German>
+        </Key>
+        <Key ID="STR_ACE_Repair_editorLoadedWheels">
+            <English>Spare Wheels</English>
+            <German>Ersatzreifen</German>
+        </Key>
+        <Key ID="STR_ACE_Repair_editorLoadedWheels_tooltip">
+            <English>Number of spare wheels in cargo.</English>
+            <German>Anzahl der Ersatzreifen im Laderaum.</German>
         </Key>
     </Package>
 </Project>

@@ -16,7 +16,7 @@ class CfgAmmo {
         effectsMissile = "missile2";
 
         irLock = 1;
-        laserLock = 0;
+        laserLock = 1;
         manualControl = 0;
         maxSpeed = 450;
 
@@ -27,13 +27,13 @@ class CfgAmmo {
         EGVAR(rearm,caliber) = 178;
 
         class ace_missileguidance {
-            enabled = 0;
+            enabled = 1;
 
             minDeflection = 0.0005;      // Minium flap deflection for guidance
             maxDeflection = 0.01;       // Maximum flap deflection for guidance
             incDeflection = 0.0005;      // The incrmeent in which deflection adjusts.
 
-            canVanillaLock = 0;          // Can this default vanilla lock? Only applicable to non-cadet mode
+            canVanillaLock = 1;          // Can this default vanilla lock? Only applicable to non-cadet mode
 
             // Guidance type for munitions
             defaultSeekerType = "SALH";

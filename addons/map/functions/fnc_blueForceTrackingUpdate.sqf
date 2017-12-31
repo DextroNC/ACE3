@@ -83,6 +83,10 @@ if (GVAR(BFT_Enabled) and {(!isNil "ACE_player") and {alive ACE_player}}) then {
 		case "E-2": {["SevenR_Et","SRColorBlue",false]};	
 		case "H-1": {["SevenR_Ho","SRColorBlue",false]};	
 		case "H-2": {["SevenR_Ht","SRColorBlue",false]};	
+		case "W-1": {["SevenR_Wo","SRColorBlue",false]};	
+		case "W-2": {["SevenR_Wt","SRColorBlue",false]};	
+		case "W-3": {["SevenR_Wtr","SRColorBlue",false]};	
+		case "W-4": {["SevenR_Wf","SRColorBlue",false]};	
 		default {[[_x] call EFUNC(common,getMarkerType),"SRColorBlue",true]}; 
 		};
 		

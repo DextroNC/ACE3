@@ -14,6 +14,10 @@
 #include "script_component.hpp"
 #include "..\defines.hpp"
 
+#ifdef ENABLE_PERF_PROFILING
+    private _scopeFillRightPanel = createProfileScope QFUNC(fillRightPanel);
+#endif
+
 params ["_display", "_control"];
 
 private _ctrlIDC = ctrlIDC _control;
@@ -86,7 +90,7 @@ private _compatibleMagazines = [[[], []], [[], []], [[], []]];
                     private _magArray = [_magazineGroups, _x] call CBA_fnc_hashGet;
                     {((_compatibleMagazines select _index) select _subIndex) pushBackUnique _x} forEach _magArray;
                 } else {
-                    ((_compatibleMagazines select _index) select _subIndex) pushBackUnique _x
+                    ((_compatibleMagazines select _index) select _subIndex) pushBackUnique (configName (configFile >> "CfgMagazines" >> _x))
                 }
             } foreach ([getArray (_weaponConfig >> _x >> "magazines"), getArray (_weaponConfig >> "magazines")] select (_x == "this"));
         } foreach getArray (_weaponConfig >> "muzzles");

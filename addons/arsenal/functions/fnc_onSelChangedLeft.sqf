@@ -14,6 +14,10 @@
 #include "script_component.hpp"
 #include "..\defines.hpp"
 
+#ifdef ENABLE_PERF_PROFILING
+    private _scopeOnSelChangedLeft = createProfileScope QFUNC(onSelChangedLeft);
+#endif
+
 params ["_control", "_curSel"];
 
 if (_curSel < 0) exitwith {};
@@ -410,4 +414,4 @@ switch (GVAR(currentLeftPanel)) do {
     };
 };
 
-(_display displayCtrl IDC_totalWeightText) ctrlSetText ([[GVAR(center), 1] call EFUNC(common,getWeight), [GVAR(center), 2] call EFUNC(common,getWeight)] joinString " / ");
+(_display displayCtrl IDC_totalWeightText) ctrlSetText (format ["%1 (%2)", [GVAR(center), 2] call EFUNC(common,getWeight), [GVAR(center), 1] call EFUNC(common,getWeight)]);

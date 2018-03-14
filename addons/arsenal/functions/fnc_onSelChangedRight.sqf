@@ -14,6 +14,10 @@
 #include "script_component.hpp"
 #include "..\defines.hpp"
 
+#ifdef ENABLE_PERF_PROFILING
+    private _scopeOnSelChangedRight = createProfileScope QFUNC(onSelChangedRight);
+#endif
+
 params ["_control", "_curSel"];
 
 if (_curSel < 0) exitwith {};
@@ -74,4 +78,4 @@ private _fnc_selectItem = {
     [IDC_buttonMuzzle, IDC_buttonItemAcc, IDC_buttonOptic, IDC_buttonBipod, IDC_buttonCurrentMag, IDC_buttonCurrentMag2] find GVAR(currentRightPanel)
 ] call _fnc_selectItem;
 
-(_display displayCtrl IDC_totalWeightText) ctrlSetText ([[GVAR(center), 1] call EFUNC(common,getWeight), [GVAR(center), 2] call EFUNC(common,getWeight)] joinString " / ");
+(_display displayCtrl IDC_totalWeightText) ctrlSetText (format ["%1 (%2)", [GVAR(center), 2] call EFUNC(common,getWeight), [GVAR(center), 1] call EFUNC(common,getWeight)]);

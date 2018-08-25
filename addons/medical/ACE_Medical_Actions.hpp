@@ -15,7 +15,6 @@ class ACE_Head {
         statement = QUOTE([ARR_4(_player, _target, 'head', 'Bandage')] call DFUNC(treatment));
         EXCEPTIONS
         showDisabled = 1;
-        priority = 2;
         icon = QPATHTOF(UI\icons\bandage.paa);
     };
     // Advanced medical
@@ -26,7 +25,6 @@ class ACE_Head {
         statement = QUOTE([ARR_4(_player, _target, 'head', 'FieldDressing')] call DFUNC(treatment));
         EXCEPTIONS
         showDisabled = 0;
-        priority = 2;
         icon = QPATHTOF(UI\icons\bandage.paa);
     };
     class PackingBandage: fieldDressing {
@@ -92,7 +90,6 @@ class ACE_Torso {
         statement = QUOTE([ARR_4(_player, _target, 'body', 'Bandage')] call DFUNC(treatment));
         EXCEPTIONS
         showDisabled = 1;
-        priority = 2;
         enableInside = 1;
         icon = QPATHTOF(UI\icons\bandage.paa);
     };
@@ -103,8 +100,17 @@ class ACE_Torso {
         statement = QUOTE([ARR_4(_player, _target, 'body', 'BodyBag')] call DFUNC(treatment));
         EXCEPTIONS
         showDisabled = 1;
-        priority = 2;
         enableInside = 1;
+    };
+    class TriageCard {
+        displayName = CSTRING(Actions_TriageCard);
+        distance = 2.0;
+        condition = "true";
+        statement = QUOTE([ARR_2(_target, true)] call DFUNC(displayTriageCard));
+        EXCEPTIONS
+        showDisabled = 1;
+        enableInside = 1;
+        icon = QPATHTOF(UI\icons\triageCard.paa);
     };
     class Diagnose {
         displayName = CSTRING(Actions_Diagnose);
@@ -113,7 +119,6 @@ class ACE_Torso {
         statement = QUOTE([ARR_4(_player, _target, 'body', 'Diagnose')] call DFUNC(treatment));
         EXCEPTIONS
         showDisabled = 0;
-        priority = 2;
         icon = "";
     };
 
@@ -125,7 +130,6 @@ class ACE_Torso {
         statement = QUOTE([ARR_4(_player, _target, 'body', 'FieldDressing')] call DFUNC(treatment));
         EXCEPTIONS
         showDisabled = 0;
-        priority = 2;
         enableInside = 1;
         icon = QPATHTOF(UI\icons\bandage.paa);
     };
@@ -189,7 +193,6 @@ class ACE_ArmLeft {
         statement = QUOTE([ARR_4(_player, _target, 'hand_l', 'Bandage')] call DFUNC(treatment));
         EXCEPTIONS
         showDisabled = 1;
-        priority = 2;
         icon = QPATHTOF(UI\icons\bandage.paa);
     };
 
@@ -201,7 +204,6 @@ class ACE_ArmLeft {
         statement = QUOTE([ARR_4(_player, _target, 'hand_l', 'FieldDressing')] call DFUNC(treatment));
         EXCEPTIONS
         showDisabled = 0;
-        priority = 2;
         icon = QPATHTOF(UI\icons\bandage.paa);
     };
     class PackingBandage: fieldDressing {
@@ -352,7 +354,6 @@ class ACE_ArmRight {
         statement = QUOTE([ARR_4(_player, _target, 'hand_r', 'Bandage')] call DFUNC(treatment));
         EXCEPTIONS
         showDisabled = 1;
-        priority = 2;
         icon = QPATHTOF(UI\icons\bandage.paa);
     };
 
@@ -364,7 +365,6 @@ class ACE_ArmRight {
         statement = QUOTE([ARR_4(_player, _target, 'hand_r', 'FieldDressing')] call DFUNC(treatment));
         EXCEPTIONS
         showDisabled = 0;
-        priority = 2;
         icon = QPATHTOF(UI\icons\bandage.paa);
     };
     class PackingBandage: fieldDressing {
@@ -513,7 +513,6 @@ class ACE_LegLeft {
         statement = QUOTE([ARR_4(_player, _target, 'leg_l', 'Bandage')] call DFUNC(treatment));
         EXCEPTIONS
         showDisabled = 1;
-        priority = 2;
         icon = QPATHTOF(UI\icons\bandage.paa);
     };
 
@@ -526,7 +525,6 @@ class ACE_LegLeft {
         statement = QUOTE([ARR_4(_player, _target, 'leg_l', 'FieldDressing')] call DFUNC(treatment));
         EXCEPTIONS
         showDisabled = 0;
-        priority = 2;
         icon = QPATHTOF(UI\icons\bandage.paa);
     };
     class PackingBandage: fieldDressing {
@@ -563,7 +561,7 @@ class ACE_LegLeft {
         icon = QPATHTOF(UI\icons\autoInjector.paa);
     };
     class Adenosine: Morphine {
-        displayName = CSTRING(Inject_Atropine);
+        displayName = CSTRING(Inject_Adenosine);
         condition = QUOTE([ARR_4(_player, _target, 'leg_l', 'Adenosine')] call DFUNC(canTreatCached));
         statement = QUOTE([ARR_4(_player, _target, 'leg_l', 'Adenosine')] call DFUNC(treatment));
         EXCEPTIONS
@@ -661,7 +659,6 @@ class ACE_LegRight {
         statement = QUOTE([ARR_4(_player, _target, 'leg_r', 'Bandage')] call DFUNC(treatment));
         EXCEPTIONS
         showDisabled = 1;
-        priority = 2;
         icon = QPATHTOF(UI\icons\bandage.paa);
     };
 
@@ -674,7 +671,6 @@ class ACE_LegRight {
         statement = QUOTE([ARR_4(_player, _target, 'leg_r', 'FieldDressing')] call DFUNC(treatment));
         EXCEPTIONS
         showDisabled = 0;
-        priority = 2;
         icon = QPATHTOF(UI\icons\bandage.paa);
     };
     class PackingBandage: fieldDressing {
@@ -711,7 +707,7 @@ class ACE_LegRight {
         icon = QPATHTOF(UI\icons\autoInjector.paa);
     };
     class Adenosine: Morphine {
-        displayName = CSTRING(Inject_Atropine);
+        displayName = CSTRING(Inject_Adenosine);
         condition = QUOTE([ARR_4(_player, _target, 'leg_r', 'Adenosine')] call DFUNC(canTreatCached));
         statement = QUOTE([ARR_4(_player, _target, 'leg_r', 'Adenosine')] call DFUNC(treatment));
         EXCEPTIONS

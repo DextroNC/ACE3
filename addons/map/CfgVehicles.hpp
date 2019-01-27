@@ -15,17 +15,17 @@ class CfgVehicles {
 		    class ACE_TeamManagement {
                 class ACE_FTL_Red {
                     displayName = "Become FTL - Red";
-                    condition = QUOTE([_player] call DFUNC(checkFTL));
+                    condition = "[player] call ace_map_fnc_checkFTL";
                     exceptions[] = {"isNotSwimming", "isNotInside", "isNotSitting", "isNotOnLadder", "isNotRefueling"};
-                    statement = QUOTE([_player,'RED'] call DFUNC(becomeFTL));
+                    statement = "[player,'RED'] call ace_map_fnc_becomeFTL";
                     showDisabled = 1;
                     icon = QPATHTOF(UI\FTL_Red.paa);
                 };
                 class ACE_FTL_Blue {
-                    displayName = "Become FTL - Blue";
-                    condition = QUOTE([_player] call DFUNC(checkFTL));
+                    displayName = "Become FTL - Red";
+                    condition = "[player] call ace_map_fnc_checkFTL";
                     exceptions[] = {"isNotSwimming", "isNotInside", "isNotSitting", "isNotOnLadder", "isNotRefueling"};
-                    statement =  QUOTE([_player,'BLUE'] call DFUNC(becomeFTL));
+                    statement = "[player,'BLUE'] call ace_map_fnc_becomeFTL";
                     showDisabled = 1;
                     icon = QPATHTOF(UI\FTL_Blue.paa);
                 };
@@ -33,7 +33,7 @@ class CfgVehicles {
                     displayName = "Remove FTL";
                     condition = "_player getVariable ['ACE_FTL',''] in ['RED','BLUE']";
                     exceptions[] = {"isNotSwimming", "isNotInside", "isNotSitting", "isNotOnLadder", "isNotRefueling"};
-                    statement =  QUOTE(_this call DFUNC(demoteFTL));
+                    statement =  "[player] call ace_map_fnc_demoteFTL";
                     showDisabled = 1;
                     icon = QPATHTOF(UI\FTL_Demote.paa);
                 };

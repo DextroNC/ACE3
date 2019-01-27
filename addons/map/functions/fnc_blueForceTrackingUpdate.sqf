@@ -113,6 +113,7 @@ if (GVAR(BFT_Enabled) and {(!isNil "ACE_player") and {alive ACE_player}}) then {
     } forEach _groupsToDrawMarkers;
 
 	// Check if more than 6 per Squad
+	_units = units group ACE_player;
 	if (count _units > 6) then {
 		{
 			// Check if FTL and select Marker Details

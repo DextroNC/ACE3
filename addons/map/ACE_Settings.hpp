@@ -1,33 +1,73 @@
 class ACE_Settings {
     class GVAR(BFT_Interval) {
-        movedToSQF = 1;
+        category = CSTRING(Module_DisplayName);
+        value = 1.0;
+        typeName = "SCALAR";
+        displayName = CSTRING(BFT_Interval_DisplayName);
+        description = CSTRING(BFT_Interval_Description);
     };
     class GVAR(BFT_Enabled) {
-        movedToSQF = 1;
+        category = CSTRING(Module_DisplayName);
+        value = 0;
+        typeName = "BOOL";
+        displayName = CSTRING(BFT_Enabled_DisplayName);
+        description = CSTRING(BFT_Enabled_Description);
     };
     class GVAR(BFT_HideAiGroups) {
-        movedToSQF = 1;
+        category = CSTRING(Module_DisplayName);
+        value = 0;
+        typeName = "BOOL";
+        displayName = CSTRING(BFT_HideAiGroups_DisplayName);
+        description = CSTRING(BFT_HideAiGroups_Description);
     };
     class GVAR(BFT_ShowPlayerNames) {
-        movedToSQF = 1;
+        category = CSTRING(Module_DisplayName);
+        value = 0;
+        typeName = "BOOL";
+        displayName = CSTRING(BFT_ShowPlayerNames_DisplayName);
+        description = CSTRING(BFT_ShowPlayerNames_Description);
     };
     class GVAR(mapIllumination) {
-        movedToSQF = 1;
+        category = CSTRING(Module_DisplayName);
+        value = 1;
+        typeName = "BOOL";
+        displayName = CSTRING(MapIllumination_DisplayName);
+        description = CSTRING(MapIllumination_Description);
     };
     class GVAR(mapGlow) {
-        movedToSQF = 1;
+        category = CSTRING(Module_DisplayName);
+        value = 1;
+        typeName = "BOOL";
+        displayName = CSTRING(MapGlow_DisplayName);
+        description = CSTRING(MapGlow_Description);
     };
     class GVAR(mapShake) {
-        movedToSQF = 1;
+        category = CSTRING(Module_DisplayName);
+        value = 1;
+        typeName = "BOOL";
+        displayName = CSTRING(MapShake_DisplayName);
+        description = CSTRING(MapShake_Description);
     };
     class GVAR(mapLimitZoom) {
-        movedToSQF = 1;
+        category = CSTRING(Module_DisplayName);
+        value = 0;
+        typeName = "BOOL";
+        displayName = CSTRING(MapLimitZoom_DisplayName);
+        description = CSTRING(MapLimitZoom_Description);
     };
     class GVAR(mapShowCursorCoordinates) {
-        movedToSQF = 1;
+        category = CSTRING(Module_DisplayName);
+        value = 0;
+        typeName = "BOOL";
+        displayName = CSTRING(MapShowCursorCoordinates_DisplayName);
+        description = CSTRING(MapShowCursorCoordinates_Description);
     };
     class GVAR(defaultChannel) {
-        movedToSQF = 1;
+        category = CSTRING(Module_DisplayName);
+        value = -1;
+        typeName = "SCALAR";
+        displayName = CSTRING(DefaultChannel_DisplayName);
+        description = CSTRING(DefaultChannel_Description);
     };
 	class GVAR(BFT_FT_Markers) {
         category = CSTRING(Module_DisplayName);

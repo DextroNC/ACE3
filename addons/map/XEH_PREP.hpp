@@ -11,3 +11,6 @@ PREP(onDrawMap);
 PREP(simulateMapLight);
 PREP(switchFlashlight);
 PREP(updateMapEffects);
+PREP(checkFTL);
+PREP(becomeFTL);
+PREP(demoteFTL);

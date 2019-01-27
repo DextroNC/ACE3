@@ -10,7 +10,7 @@
  * 1: Color of the overlay <ARRAY>
  *
  * Example:
- * [player] call ACE_map_fnc_determineMapLight
+ * call ACE_map_fnc_determineMapLight
  *
  * Public: No
  */

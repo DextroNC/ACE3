@@ -111,8 +111,24 @@ if (GVAR(BFT_Enabled) and {(!isNil "ACE_player") and {alive ACE_player}}) then {
 		};
         GVAR(BFT_markers) pushBack _marker;
     } forEach _groupsToDrawMarkers;
+
+	// Check if more than 6 per Squad
+	if (count _units > 6) then {
+		{
+			// Check if FTL and select Marker Details
+			_markerDetail = [];
+			switch (_x getVariable ["ACE_FTL",""]) do {
+				case "Red": {_markerDetail = ["SevenR_FTL","SRColorRed",false]};
+				case "Blue": {_markerDetail = ["SevenR_FTL","SRColorBlue",false]};
+			};
+			// Draw FTL Marker
+			if (count _markerDetail > 0) then {
+				private _marker = createMarkerLocal [format ["ACE_BFT_FTL_%1", _forEachIndex], [(getPos  _x) select 0, (getPos _x) select 1]];
+				_marker setMarkerTypeLocal (_markerDetail select 0);
+				_marker setMarkerColorLocal (_markerDetail select 1);
+				GVAR(BFT_markers) pushBack _marker;
+			};
+		}forEach _units;	
+	};
 };
 // END_COUNTER(blueForceTrackingUpdate);
-
-
-

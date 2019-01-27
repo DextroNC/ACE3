@@ -10,7 +10,34 @@ class CfgVehicles {
                 exceptions[] = {"isNotDragging", "notOnMap", "isNotInside", "isNotSitting"};
                 insertChildren = QUOTE(_this call DFUNC(compileFlashlightMenu));
                 showDisabled = 0;
+                priority = 99;
             };
+		    class ACE_TeamManagement {
+                class ACE_FTL_Red {
+                    displayName = "Become FTL - Red";
+                    condition = QUOTE([_player] call DFUNC(checkFTL));
+                    exceptions[] = {"isNotSwimming", "isNotInside", "isNotSitting", "isNotOnLadder", "isNotRefueling"};
+                    statement = QUOTE([_player,'RED'] call DFUNC(becomeFTL));
+                    showDisabled = 1;
+                    icon = QPATHTOF(UI\FTL_Red.paa);
+                };
+                class ACE_FTL_Blue {
+                    displayName = "Become FTL - Blue";
+                    condition = QUOTE([_player] call DFUNC(checkFTL));
+                    exceptions[] = {"isNotSwimming", "isNotInside", "isNotSitting", "isNotOnLadder", "isNotRefueling"};
+                    statement =  QUOTE([_player,'BLUE'] call DFUNC(becomeFTL));
+                    showDisabled = 1;
+                    icon = QPATHTOF(UI\FTL_Blue.paa);
+                };
+                class ACE_FTL_Demote {
+                    displayName = "Remove FTL";
+                    condition = "_player getVariable ['ACE_FTL',''] in ['RED','BLUE']";
+                    exceptions[] = {"isNotSwimming", "isNotInside", "isNotSitting", "isNotOnLadder", "isNotRefueling"};
+                    statement =  QUOTE(_this call DFUNC(demoteFTL));
+                    showDisabled = 1;
+                    icon = QPATHTOF(UI\FTL_Demote.paa);
+                };
+	    	};
         };
     };
 

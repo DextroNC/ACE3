@@ -71,10 +71,10 @@ call FUNC(determineZoom);
     };
 
     // Start Blue Force Tracking if Enabled
-    if (GVAR(BFT_Enabled)) then {
+   // if (GVAR(BFT_Enabled)) then {
         GVAR(BFT_markers) = [];
         [FUNC(blueForceTrackingUpdate), GVAR(BFT_Interval), []] call CBA_fnc_addPerFrameHandler;
-    };
+   //};
 
     //illumination settings
     if (GVAR(mapIllumination)) then {

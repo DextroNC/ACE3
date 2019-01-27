@@ -29,6 +29,7 @@ params ["_unit","_fireTeam"];
 // Set FTL
 _unit setVariable ["ACE_FTL",_fireTeam,true];
 _unit setUnitRank "CORPORAL";
+_unit assignTeam _fireTeam;
 
 _str = "You are FTL - " + _fireTeam; 
  [_str] call EFUNC(common,displayTextStructured);

@@ -10,45 +10,44 @@
 GVAR(BFT_markers) = [];
 
 if (GVAR(BFT_Enabled) and {(!isNil "ACE_player") and {alive ACE_player}}) then {
+	private _groupsToDrawMarkers = [];
+	private _playerSide = call EFUNC(common,playerSide);
 
-    private _groupsToDrawMarkers = [];
-    private _playerSide = call EFUNC(common,playerSide);
+	_groupsToDrawMarkers = allGroups select {side _x == _playerSide};
 
-    _groupsToDrawMarkers = allGroups select {side _x == _playerSide};
+	if (GVAR(BFT_HideAiGroups)) then {
+		_groupsToDrawMarkers = _groupsToDrawMarkers select {
+			{
+				_x call EFUNC(common,isPlayer);
+			} count units _x > 0;
+		};
+	};
 
-    if (GVAR(BFT_HideAiGroups)) then {
-        _groupsToDrawMarkers = _groupsToDrawMarkers select {
-            {
-                _x call EFUNC(common,isPlayer);
-            } count units _x > 0;
-        };
-    };
+	if (GVAR(BFT_ShowPlayerNames)) then {
+		private _playersToDrawMarkers = allPlayers select {side _x == _playerSide && {!(_x getVariable [QGVAR(hideBlueForceMarker), false])}};
 
-    if (GVAR(BFT_ShowPlayerNames)) then {
-        private _playersToDrawMarkers = allPlayers select {side _x == _playerSide && {!(_x getVariable [QGVAR(hideBlueForceMarker), false])}};
+		{
+			private _markerType = [_x] call EFUNC(common,getMarkerType);
+			private _colour = format ["Color%1", side _x];
 
-        {
-            private _markerType = [_x] call EFUNC(common,getMarkerType);
-            private _colour = format ["Color%1", side _x];
+			private _marker = createMarkerLocal [format ["ACE_BFT_%1", _forEachIndex], [(getPos _x) select 0, (getPos _x) select 1]];
+			_marker setMarkerTypeLocal _markerType;
+			_marker setMarkerColorLocal _colour;
+			_marker setMarkerTextLocal (name _x);
 
-            private _marker = createMarkerLocal [format ["ACE_BFT_%1", _forEachIndex], [(getPos _x) select 0, (getPos _x) select 1]];
-            _marker setMarkerTypeLocal _markerType;
-            _marker setMarkerColorLocal _colour;
-            _marker setMarkerTextLocal (name _x);
+			GVAR(BFT_markers) pushBack _marker;
+		} forEach _playersToDrawMarkers;
 
-            GVAR(BFT_markers) pushBack _marker;
-        } forEach _playersToDrawMarkers;
+		_groupsToDrawMarkers = _groupsToDrawMarkers select {
+			{
+				!(_x call EFUNC(common,isPlayer));
+			} count units _x > 0;
+		};
+	};
 
-        _groupsToDrawMarkers = _groupsToDrawMarkers select {
-            {
-                !(_x call EFUNC(common,isPlayer));
-            } count units _x > 0;
-        };
-    };
+	_groupsToDrawMarkers = _groupsToDrawMarkers select {!(_x getVariable [QGVAR(hideBlueForceMarker), false])};
 
-    _groupsToDrawMarkers = _groupsToDrawMarkers select {!(_x getVariable [QGVAR(hideBlueForceMarker), false])};
-
-    {
+	{
 		private "_markerDetail";
 		_markerDetail = switch (groupId _x) do {
 		case "HQ": {["SevenR_HQ","SRColorGold",false]};
@@ -89,7 +88,7 @@ if (GVAR(BFT_Enabled) and {(!isNil "ACE_player") and {alive ACE_player}}) then {
 		case "W-4": {["SevenR_Wf","SRColorBlue",false]};	
 		default {[[_x] call EFUNC(common,getMarkerType),"SRColorBlue",true]}; 
 		};
-		
+		if (count _markerDetail < 2) throw "Error BFT Marker Detail";
 		// SGT Marker
 		if ((groupId _x) in ["PL","PL-1","PL-2"]) then {
 			{
@@ -103,15 +102,15 @@ if (GVAR(BFT_Enabled) and {(!isNil "ACE_player") and {alive ACE_player}}) then {
 			}forEach units _x;
 		};
 		
-        private _marker = createMarkerLocal [format ["ACE_BFT_%1", _forEachIndex], [(getPos leader _x) select 0, (getPos leader _x) select 1]];
-        _marker setMarkerTypeLocal (_markerDetail select 0);
-        _marker setMarkerColorLocal (_markerDetail select 1);
+		private _marker = createMarkerLocal [format ["ACE_BFT_%1", _forEachIndex], [(getPos leader _x) select 0, (getPos leader _x) select 1]];
+		_marker setMarkerTypeLocal (_markerDetail select 0);
+		_marker setMarkerColorLocal (_markerDetail select 1);
 		if (_markerDetail select 2) then {
 			_marker setMarkerTextLocal (groupId _x);
 		};
-        GVAR(BFT_markers) pushBack _marker;
-    } forEach _groupsToDrawMarkers;
-
+		GVAR(BFT_markers) pushBack _marker;
+	} forEach _groupsToDrawMarkers;
+	
 	// Check if more than 6 per Squad
 	_units = units group ACE_player;
 	if (count _units > 6) then {
@@ -119,8 +118,8 @@ if (GVAR(BFT_Enabled) and {(!isNil "ACE_player") and {alive ACE_player}}) then {
 			// Check if FTL and select Marker Details
 			_markerDetail = [];
 			switch (_x getVariable ["ACE_FTL",""]) do {
-				case "Red": {_markerDetail = ["SevenR_FTL","SRColorRed",false]};
-				case "Blue": {_markerDetail = ["SevenR_FTL","SRColorBlue",false]};
+				case "RED": {_markerDetail = ["SevenR_FTL","SRColorRed",false]};
+				case "BLUE": {_markerDetail = ["SevenR_FTL","SRColorBlue",false]};
 			};
 			// Draw FTL Marker
 			if (count _markerDetail > 0) then {

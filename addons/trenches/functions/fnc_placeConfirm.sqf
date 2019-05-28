@@ -37,17 +37,6 @@ params ["_unit"];
 if (isNull GVAR(trench)) exitWith {};
 
 deleteVehicle GVAR(trench);
-
-// Check Costs
-private _cost = getNumber (configFile >> "CfgVehicles" >> GVAR(trenchClass) >> QGVAR(trenchCosts));
-if (_cost > 0) then {
-	private _remain = GVAR(trenchSupplies) - _cost;
-	if (_remain < 0) exitWith {hint "Not enough Resources"};
-	GVAR(trenchSupplies) = _remain;
-	publicVariable QGVAR(trenchSupplies);
-	hint format ["%1 Resources left", _remain];
-};
-
 private _trench = createVehicle [GVAR(trenchClass), [0, 0, 0], [], 0, "NONE"];
 
 GVAR(trenchPlacementData) params ["_dx", "_dy", "_offset"];
@@ -81,5 +70,5 @@ private _vecDirAndUp = [_v1, _v3];
 GVAR(trench) = objNull;
 
 _trench setVariable [QGVAR(placeData), [_basePos, _vecDirAndUp], true];
-GVAR(trench) enableCollisionWith _unit; 
+
 [_trench, _unit] call FUNC(continueDiggingTrench);

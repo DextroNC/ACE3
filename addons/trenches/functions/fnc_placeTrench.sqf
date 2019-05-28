@@ -22,8 +22,6 @@ params ["_unit", "_trenchClass"];
 private _noGeoModel = getText (configFile >> "CfgVehicles" >> _trenchClass >> QGVAR(noGeoClass));
 if(_noGeoModel == "") then {_noGeoModel = _trenchClass;};
 
-private _offset = getNumber (configFile >> "CfgVehicles" >> _trenchClass >> QGVAR(offset));
-
 GVAR(trenchClass) = _trenchClass;
 GVAR(trenchPlacementData) = getArray (configFile >> "CfgVehicles" >> _trenchClass >> QGVAR(placementData));
 TRACE_1("",GVAR(trenchPlacementData));
@@ -34,22 +32,17 @@ TRACE_1("",GVAR(trenchPlacementData));
 
 // create the trench
 private _trench = createVehicle [_noGeoModel, [0, 0, 0], [], 0, "NONE"];
-//_trench setDir _offset;
-GVAR(trench) = _trench;
 
-// Disable Collision
-GVAR(trench) disableCollisionWith _unit; 
+GVAR(trench) = _trench;
 
 // prevent collisions with trench
 [QEGVAR(common,enableSimulationGlobal), [_trench, false]] call CBA_fnc_serverEvent;
 
-GVAR(digDirection) = _offset;
-
-private _cost = getNumber (configFile >> "CfgVehicles" >> GVAR(trenchClass) >> QGVAR(trenchCosts));
+GVAR(digDirection) = 0;
 
 // pfh that runs while the dig is in progress
 GVAR(digPFH) = [{
-    (_this select 0) params ["_unit", "_trench","_cost"];
+    (_this select 0) params ["_unit", "_trench"];
 
     // Cancel if the helper object is gone
     if (isNull _trench) exitWith {
@@ -57,15 +50,14 @@ GVAR(digPFH) = [{
     };
 
     // Cancel if the place is no longer suitable
-	if (_cost == 0) then {
-		if !([_unit] call FUNC(canDigTrench)) exitWith {
-			[_unit] call FUNC(placeCancel);
-		};
-	};
+    if !([_unit] call FUNC(canDigTrench)) exitWith {
+        [_unit] call FUNC(placeCancel);
+    };
 
     // Update trench position
     GVAR(trenchPlacementData) params ["_dx", "_dy", "_offset"];
-    private _basePos = eyePos _unit vectorAdd ([sin getDir _unit, +cos getDir _unit, 0] vectorMultiply 2.0);
+    private _basePos = eyePos _unit vectorAdd ([sin getDir _unit, +cos getDir _unit, 0] vectorMultiply 1.0);
+
     private _angle = (GVAR(digDirection) + getDir _unit);
 
     // _v1 forward from the player, _v2 to the right, _v3 points away from the ground
@@ -95,7 +87,7 @@ GVAR(digPFH) = [{
     _trench setVectorDirAndUp [_v1, _v3];
     GVAR(trenchPos) = _basePos;
 
-}, 0, [_unit, _trench,_cost]] call CBA_fnc_addPerFrameHandler;
+}, 0, [_unit, _trench]] call CBA_fnc_addPerFrameHandler;
 
 // add mouse button action and hint
 [localize LSTRING(ConfirmDig), localize LSTRING(CancelDig), localize LSTRING(ScrollAction)] call EFUNC(interaction,showMouseHint);

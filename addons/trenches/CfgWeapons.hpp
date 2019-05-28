@@ -13,15 +13,4 @@ class CfgWeapons {
             mass = 10;
         };
     };
-	class ACE_ConstructionTool: ACE_ItemCore {
-        author = ECSTRING(common,ACETeam);
-        displayName = "Construction Tool";
-        descriptionShort = "Required to construct fortifications.";
-        model = "\A3\Structures_F_EPB\Items\Military\Ammobox_rounds_F.p3d";
-        picture = QPATHTOF(ui\const_tool.paa);
-        scope = 2;
-        class ItemInfo: CBA_MiscItem_ItemInfo  {
-            mass = 60;
-        };
-    };
 };

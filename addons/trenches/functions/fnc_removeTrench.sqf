@@ -75,11 +75,3 @@ for "_i" from _progressLeft to 10 do {
 
 // Play animation
 [_unit, "AinvPknlMstpSnonWnonDnon_medic4"] call EFUNC(common,doAnimation);
-
-// Return Costs
-private _cost = getNumber (configFile >> "CfgVehicles" >> (typeof _trench) >> QGVAR(trenchCosts));
-if (_cost > 0) then {
-	private _remain = _cost / 2;
-	GVAR(trenchSupplies) = GVAR(trenchSupplies) + _remain;
-	publicVariable QGVAR(trenchSupplies);
-};

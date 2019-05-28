@@ -9,6 +9,9 @@
  * Return Value:
  * None
  *
+ * Example:
+ * [bob] call ace_trenches_fnc_handleUnconscious
+ *
  * Public: No
 */
 

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: Ruthberg, commy2, esteldunedain
  * Checks if a unit can dig a trench
@@ -13,13 +14,12 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 #define SURFACE_BLACKLIST ["water", "concrete", "tarmac", "wood", "metal", "roof_tin", "roof_tiles", "wood_int", "concrete_int", "tiles_int", "metal_int", "stony", "rock", "int_concrete", "int_tiles", "int_wood", "tiling", "wavymetal", "int_metal"]
 
 params ["_unit"];
 
-if !("ACE_EntrenchingTool" in items _unit) exitWith {false};
+if !("ACE_EntrenchingTool" in (_unit call EFUNC(common,uniqueItems))) exitWith {false};
 
 // Can't dig trench if above ground level
 if ((getPosATL _unit) select 2 > 0.05) exitWith {false};

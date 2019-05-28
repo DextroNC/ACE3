@@ -121,6 +121,7 @@ PREP(equipGasmask);
 PREP(removeGasmask);
 PREP(poisonCondition);
 PREP(poison);
+PREP(updateTourniquets);
 
 // Networked litter
 PREP(createLitter);

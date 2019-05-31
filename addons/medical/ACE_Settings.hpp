@@ -345,7 +345,7 @@ class ACE_Settings {
         description = "Minimum Blood Level required to stay in revive instead of dying.";
 		typeName = "SCALAR";
         value = 15;
-        sliderSettings[] = {0, 30, 3, 0};
+        sliderSettings[] = {0, 100, 3, 0};
     };
     class GVAR(convertItems) {
         category = CSTRING(Category_Medical);

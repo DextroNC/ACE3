@@ -214,6 +214,11 @@ private _treatmentTime = if (isNumber (_config >> "treatmentTime")) then {
     0;
 };
 
+// When in medical facility cut down treatment time
+if ([_caller] call FUNC(isInMedicalFacility) && [_caller, GVAR(facilityBonus)] call FUNC(isMedic)) then {
+    _treatmentTime = ceil (_treatmentTime * GVAR(facilityBonusModifier));
+};
+
 // Start treatment
 [
     _treatmentTime,

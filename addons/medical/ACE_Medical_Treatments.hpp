@@ -37,7 +37,7 @@ class ACE_Medical_Actions {
             allowedSelections[] = {"hand_l", "hand_r", "leg_l", "leg_r"};
             allowSelfTreatment = 1;
             category = "medication";
-            treatmentTime = 2;
+            treatmentTime = 3;
             items[] = {"ACE_morphine"};
             callbackSuccess = QUOTE(DFUNC(treatmentBasic_morphine));
             animationCaller = "AinvPknlMstpSnonWnonDnon_medic1";
@@ -50,7 +50,7 @@ class ACE_Medical_Actions {
             allowSelfTreatment = 1;
             category = "medication";
             requiredMedic = QGVAR(medicSetting_basicEpi);
-            treatmentTime = 3;
+            treatmentTime = 4;
             items[] = {"ACE_epinephrine"};
             callbackSuccess = QUOTE(DFUNC(treatmentBasic_epipen));
             animationCaller = "AinvPknlMstpSnonWnonDnon_medic1";
@@ -60,7 +60,7 @@ class ACE_Medical_Actions {
 	   class Atropine: Bandage {
             displayName = CSTRING(Inject_Atropine);
             displayNameProgress = CSTRING(Injecting_Atropine);
-			treatmentTime = 3;
+			treatmentTime = 5;
             allowedSelections[] = {"hand_l", "hand_r", "leg_l", "leg_r"};
             allowSelfTreatment = 1;
             category = "medication";
@@ -76,7 +76,7 @@ class ACE_Medical_Actions {
             allowSelfTreatment = 0;
             category = "advanced";
             requiredMedic = 1;
-            treatmentTime = 7;
+            treatmentTime = 10;
             items[] = {"ACE_bloodIV"};
             // callbackSuccess = QUOTE(DFUNC(treatmentBasic_bloodbag));
             callbackSuccess = QUOTE(DFUNC(treatmentIV));
@@ -115,7 +115,7 @@ class ACE_Medical_Actions {
             treatmentLocations[] = {"All"};
             allowedSelections[] = {"head", "body"};
             requiredMedic = 0;
-            treatmentTime = 1;
+            treatmentTime = 2;
             items[] = {};
             callbackSuccess = QUOTE(DFUNC(actionDiagnose));
             callbackFailure = "";

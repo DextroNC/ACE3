@@ -539,3 +539,10 @@ class ACE_Equipment {
 		statement = QUOTE([_player] call DFUNC(removeGasmask));	
 	};
 };
+class SR_Decon
+{
+    displayName = "Decontaminate";
+    condition = QUOTE([_player] call DFUNC(inDeconArea));
+    icon = QPATHTOF(UI\icons\poison.paa);
+    statement = QUOTE([_player] call DFUNC(decon));
+};

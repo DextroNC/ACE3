@@ -39,6 +39,7 @@ private _medicalFacility =
         "GUE_WarfareBFieldhHospital",
         "INS_WarfareBFieldhHospital",
         "RU_WarfareBFieldhHospital",
+        "ACE_MedicalTent",
         "USMC_WarfareBFieldhHospital"
     ];
 

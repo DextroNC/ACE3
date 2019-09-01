@@ -78,6 +78,11 @@ if (_bloodVolume < GVAR(bloodLevelCap)) exitWith {
     [_unit, true] call FUNC(setDead);
 };
 
+// Check if in Med Facility
+If ([_unit] call ace_medical_fnc_isInMedicalFacility && _unit getVariable [QGVAR(inReviveState), false]) then {
+    _unit setVariable [QGVAR(reviveStartTime), CBA_missionTime];
+};
+
 // if unit is poisoned, checks stage and inits effects
 private _poisonStatus = _unit getVariable [QGVAR(poisonLevel), 0];
 if (_poisonStatus > 0) then {

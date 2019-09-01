@@ -345,7 +345,7 @@ class ACE_Settings {
         description = "Minimum Blood Level required to stay in revive instead of dying.";
 		typeName = "SCALAR";
         value = 15;
-        sliderSettings[] = {0, 100, 3, 0};
+        sliderSettings[] = {0, 100, 15, 0};
     };
     class GVAR(convertItems) {
         category = CSTRING(Category_Medical);
@@ -355,4 +355,20 @@ class ACE_Settings {
         value = 0;
         values[] = {ECSTRING(common,Enabled), CSTRING(MedicalSettings_convertItems_remove), ECSTRING(common,Disabled)};
     };
+    class GVAR(facilityBonus) {
+        category = CSTRING(Category_Medical);
+        displayName = "Required Level for Facility Bonus";
+        description = "Required level to unlock facility treatment time bonus";
+        typeName = "SCALAR";
+        value = 2;
+        sliderSettings[] = {0, 2, 2, 0};
+   };
+    class GVAR(facilityBonusModifier) {
+        category = CSTRING(Category_Medical);
+        displayName = "Facility Bonus Modifier";
+        description = "Facility bonus treatment time modifier";
+        typeName = "SCALAR";
+        value = 0.6;
+        sliderSettings[] = {0, 1, 0.6, 2};
+   };
 };

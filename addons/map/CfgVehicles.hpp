@@ -22,7 +22,7 @@ class CfgVehicles {
                     icon = QPATHTOF(UI\FTL_Red.paa);
                 };
                 class ACE_FTL_Blue {
-                    displayName = "Become FTL - Red";
+                    displayName = "Become FTL - Blue";
                     condition = "[player] call ace_map_fnc_checkFTL";
                     exceptions[] = {"isNotSwimming", "isNotInside", "isNotSitting", "isNotOnLadder", "isNotRefueling"};
                     statement = "[player,'BLUE'] call ace_map_fnc_becomeFTL";

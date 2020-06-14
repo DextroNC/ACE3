@@ -23,7 +23,10 @@ if (CBA_missionTime < _expireTime) exitWith {_lastResult};
 
 private _isInBuilding = false;
 
-if ({!(_x getVariable ['bin_deconshower_disableAction',false]) && _x animationSourcePhase 'valve_source' > 0} count (_unit nearObjects ['ACE_DeconStation',1.7]) > 0) then {
+/*if ({!(_x getVariable ['bin_deconshower_disableAction',false]) && _x animationSourcePhase 'valve_source' > 0} count (_unit nearObjects ['ACE_DeconStation',1.7]) > 0) then {
+    _isInBuilding = true;
+};*/
+if (count (_unit nearObjects ['ACE_DeconStation',1.7]) > 0) then {
     _isInBuilding = true;
 };
 

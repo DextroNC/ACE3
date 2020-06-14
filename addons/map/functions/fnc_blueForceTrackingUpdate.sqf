@@ -95,8 +95,13 @@ if (GVAR(BFT_Enabled) and {(!isNil "ACE_player") and {alive ACE_player}}) then {
 		case "E": {["SevenR_Eo","SRColorBlue",false]};
 		case "E-1": {["SevenR_Eo","SRColorBlue",false]};
 		case "E-2": {["SevenR_Et","SRColorBlue",false]};	
+		case "L": {["SevenR_Lo","SRColorBlue",false]};	
+		case "L-1": {["SevenR_Lo","SRColorBlue",false]};	
+		case "L-2": {["SevenR_Lt","SRColorBlue",false]};	
 		case "H-1": {["SevenR_Ho","SRColorBlue",false]};	
 		case "H-2": {["SevenR_Ht","SRColorBlue",false]};	
+		case "H-3": {["SevenR_Htr","SRColorBlue",false]};	
+		case "H-4": {["SevenR_Hf","SRColorBlue",false]};	
 		case "W-1": {["SevenR_Wo","SRColorBlue",false]};	
 		case "W-2": {["SevenR_Wt","SRColorBlue",false]};	
 		case "W-3": {["SevenR_Wtr","SRColorBlue",false]};	

@@ -19,7 +19,7 @@ params ["_unit"];
 private _return = false;
 
 // Check Condition
-if ((groupId _unit) in ["PL","PL-1","PL-2"]) then {
+if ((groupId group _unit) in ["PL","PL-1","PL-2"]) then {
 	if ((rank _unit) isEqualTo "SERGEANT") then {
 		_return = true;
 	};

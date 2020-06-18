@@ -243,7 +243,7 @@ class GVAR(actions) {
         treatmentLocations = TREATMENT_LOCATIONS_ALL;
         allowSelfTreatment = 0;
         medicRequired = 0;
-        treatmentTime = 15;
+        treatmentTime = 10;
         items[] = {"ACE_bodyBag"};
         condition = QUOTE(!alive _patient);
         callbackSuccess = QFUNC(placeInBodyBag);
@@ -259,7 +259,7 @@ class GVAR(actions) {
         allowedSelections[] = {"Body"};
         allowSelfTreatment = 0;
         medicRequired = 0;
-        treatmentTime = 15;
+        treatmentTime = 10;
         items[] = {};
         condition = QFUNC(canCPR);
         callbackSuccess = QFUNC(cprSuccess);

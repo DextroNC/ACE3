@@ -79,7 +79,7 @@ class GVAR(actions) {
         icon = QPATHTOEF(medical_gui,ui\tourniquet.paa);
         allowedSelections[] = {"LeftArm", "RightArm", "LeftLeg", "RightLeg"};
         items[] = {"ACE_tourniquet"};
-        treatmentTime = 7;
+        treatmentTime = 5;
         condition = QUOTE(!([ARR_2(_patient,_bodyPart)] call FUNC(hasTourniquetAppliedTo)));
         callbackSuccess = QFUNC(tourniquet);
         litter[] = {};
@@ -88,6 +88,7 @@ class GVAR(actions) {
         displayName = CSTRING(Actions_RemoveTourniquet);
         displayNameProgress = CSTRING(RemovingTourniquet);
         items[] = {};
+        treatmentTime = 3;
         condition = QUOTE([ARR_2(_patient,_bodyPart)] call FUNC(hasTourniquetAppliedTo));
         callbackSuccess = QFUNC(tourniquetRemove);
     };
@@ -100,7 +101,7 @@ class GVAR(actions) {
         icon = QPATHTOEF(medical_gui,ui\splint.paa);
         allowedSelections[] = {"LeftArm", "RightArm", "LeftLeg", "RightLeg"};
         items[] = {"ACE_splint"};
-        treatmentTime = 7;
+        treatmentTime = 5;
         callbackSuccess = QFUNC(splint);
         condition = QFUNC(canSplint);
         litter[] = {
@@ -117,7 +118,7 @@ class GVAR(actions) {
         category = "medication";
         items[] = {"ACE_morphine"};
         condition = "";
-        treatmentTime = 5;
+        treatmentTime = 3;
         callbackSuccess = QFUNC(medication);
         animationMedic = "AinvPknlMstpSnonWnonDnon_medic1";
         sounds[] = {{QPATHTO_R(sounds\Inject.ogg),1,1,50}};
@@ -148,7 +149,7 @@ class GVAR(actions) {
         allowSelfTreatment = QGVAR(allowSelfIV);
         category = "advanced";
         medicRequired = QGVAR(medicIV);
-        treatmentTime = 12;
+        treatmentTime = 6;
         items[] = {"ACE_bloodIV"};
         condition = "";
         callbackSuccess = QFUNC(ivBag);
@@ -223,7 +224,7 @@ class GVAR(actions) {
     class CheckBloodPressure: CheckPulse {
         displayName = CSTRING(Actions_CheckBloodPressure);
         displayNameProgress = CSTRING(Check_Bloodpressure_Content);
-        allowedSelections[] = {"LeftArm", "RightArm", "LeftLeg", "RightLeg"};
+        allowedSelections[] = {"Head","LeftArm", "RightArm", "LeftLeg", "RightLeg"};
         callbackSuccess = QFUNC(checkBloodPressure);
     };
     class CheckResponse: CheckPulse {
@@ -259,7 +260,7 @@ class GVAR(actions) {
         allowedSelections[] = {"Body"};
         allowSelfTreatment = 0;
         medicRequired = 0;
-        treatmentTime = 10;
+        treatmentTime = 8;
         items[] = {};
         condition = QFUNC(canCPR);
         callbackSuccess = QFUNC(cprSuccess);

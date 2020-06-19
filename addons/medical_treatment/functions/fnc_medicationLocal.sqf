@@ -37,6 +37,7 @@ if (!GVAR(advancedMedication)) exitWith {
             [QEGVAR(medical,WakeUp), _patient] call CBA_fnc_localEvent;
         };
     };
+    [_patient,_classname] call FUNC(medicationOverdose);
 };
 TRACE_1("Running treatmentMedicationLocal with Advanced configuration for",_patient);
 

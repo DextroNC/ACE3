@@ -60,3 +60,4 @@ PREP(treatmentFailure);
 PREP(treatmentSuccess);
 PREP(unloadUnit);
 PREP(useItem);
+PREP(medicationOverdose);

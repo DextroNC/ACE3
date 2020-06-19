@@ -49,7 +49,7 @@
 #define DEFAULT_BLOOD_VOLUME 6.0 // in liters
 
 #define BLOOD_VOLUME_CLASS_1_HEMORRHAGE 6.000 // lost less than 15% blood, Class I Hemorrhage
-#define BLOOD_VOLUME_CLASS_2_HEMORRHAGE 5.100 // lost more than 15% blood, Class II Hemorrhage
+#define BLOOD_VOLUME_CLASS_2_HEMORRHAGE 5.000 // lost more than 15% blood, Class II Hemorrhage
 #define BLOOD_VOLUME_CLASS_3_HEMORRHAGE 4.200 // lost more than 30% blood, Class III Hemorrhage
 #define BLOOD_VOLUME_CLASS_4_HEMORRHAGE 3.600 // lost more than 40% blood, Class IV Hemorrhage
 #define BLOOD_VOLUME_FATAL 3.0 // Lost more than 50% blood, Unrecoverable
@@ -85,7 +85,7 @@
 #define PAIN_SUPPRESSION_FADE_TIME 1800
 
 // Chance to wake up when vitals are stable (checked once every SPONTANEOUS_WAKE_UP_INTERVAL seconds)
-#define SPONTANEOUS_WAKE_UP_INTERVAL 15
+#define SPONTANEOUS_WAKE_UP_INTERVAL 10
 
 // Minimum leg damage required for limping
 #define LIMPING_DAMAGE_THRESHOLD EGVAR(medical,const_limpingDamageThreshold)
@@ -103,18 +103,18 @@
 #define EMPTY_WOUND [-1, -1, 0, 0, 0]
 
 // Base time to bandage each wound category
-#define BANDAGE_TIME_S 4
-#define BANDAGE_TIME_M 6
-#define BANDAGE_TIME_L 8
-#define BANDAGE_TIME_MOD_MEDIC -2
-#define BANDAGE_TIME_MOD_SELF 4
+#define BANDAGE_TIME_S 2
+#define BANDAGE_TIME_M 3
+#define BANDAGE_TIME_L 4
+#define BANDAGE_TIME_MOD_MEDIC -1
+#define BANDAGE_TIME_MOD_SELF 1
 
 #define DEFAULT_BANDAGE_REOPENING_CHANCE 0.1
 #define DEFAULT_BANDAGE_REOPENING_MIN_DELAY 120
 #define DEFAULT_BANDAGE_REOPENING_MAX_DELAY 200
 
 // Time it takes to stitch one wound
-#define WOUND_STITCH_TIME 5
+#define WOUND_STITCH_TIME 3
 
 #define DEFAULT_TOURNIQUET_VALUES [0,0,0,0,0,0]
 

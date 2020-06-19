@@ -581,7 +581,8 @@ class ADDON {
             hrIncreaseHigh[] = {-10, -35};
             timeInSystem = 1800;
             timeTillMaxEffect = 30;
-            maxDose = 4;
+            maxDose = 3;
+            onOverDose = "";
             incompatibleMedication[] = {};
             viscosityChange = -10;
         };
@@ -592,7 +593,8 @@ class ADDON {
             hrIncreaseHigh[] = {10, 40};
             timeInSystem = 120;
             timeTillMaxEffect = 10;
-            maxDose = 10;
+            maxDose = 8;
+            onOverDose = "";
             incompatibleMedication[] = {};
         };
         class Adenosine {
@@ -610,6 +612,7 @@ class ADDON {
             timeInSystem = 600;
             timeTillMaxEffect = 60;
             maxDose = 10;
+            onOverDose = "";
             incompatibleMedication[] = {};
             viscosityChange = 5;
         };

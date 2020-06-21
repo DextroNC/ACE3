@@ -103,9 +103,9 @@
 #define EMPTY_WOUND [-1, -1, 0, 0, 0]
 
 // Base time to bandage each wound category
-#define BANDAGE_TIME_S 2
-#define BANDAGE_TIME_M 3
-#define BANDAGE_TIME_L 4
+#define BANDAGE_TIME_S 4
+#define BANDAGE_TIME_M 5
+#define BANDAGE_TIME_L 6
 #define BANDAGE_TIME_MOD_MEDIC -1
 #define BANDAGE_TIME_MOD_SELF 1
 

@@ -52,9 +52,12 @@ if (_active) then {
         // Do "Unlock controls" user action, co-pilot will then have to do the "Take Controls" actions
         _unit action ["UnlockVehicleControl", vehicle _unit];
     };
+    _unit setVariable ["ACE_UnconsciousStart", CBA_MissionTime];
 } else {
     // Unit has woken up, no longer need to track this
     _unit setVariable [QEGVAR(medical,lastWakeUpCheck), nil];
+    _unit setVariable ["ACE_UnconsciousStart", -1];
+    
 };
 
 // This event doesn't correspond to unconscious in statemachine

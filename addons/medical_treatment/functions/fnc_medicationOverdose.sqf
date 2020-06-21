@@ -19,7 +19,7 @@
 params ["_patient", "_classname"];
 
 // Medication has no effects on dead units
-if (!alive _patient) exitWith {};
+if (!alive _patient && ACE_OverdoseCooldown <= 0) exitWith {};
 
 // Get overDose from Config
 private _defaultConfig = configFile >> QUOTE(ADDON) >> "Medication";
@@ -40,7 +40,7 @@ private _currentDose = 0;
 {
     private _medication = _x select 0;
     private _time = _x select 1;
-    if (_medication find _classname >= 0 && CBA_MissionTime - _time <= 120) then {
+    if (_medication find _classname >= 0 && CBA_MissionTime - _time <= ACE_OverdoseCooldown) then {
         _currentDose = _currentDose + 1;
         _updatedHistory pushBackUnique _x;
     };

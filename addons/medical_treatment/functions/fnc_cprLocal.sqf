@@ -21,7 +21,7 @@ TRACE_2("cprLocal",_medic,_patient);
 
 [_patient, "activity", LSTRING(Activity_CPR), [[_medic, false, true] call EFUNC(common,getName)]] call FUNC(addToLog);
 
-if ((random 1) < GVAR(cprSuccessChance)) then {
+if ((random 1) < GVAR(cprSuccessChance) || IN_MED_FACILITY(_medic)) then {
     TRACE_1("CPR random success",GVAR(cprSuccessChance));
     [QEGVAR(medical,CPRSucceeded), _patient] call CBA_fnc_localEvent;
 } else {

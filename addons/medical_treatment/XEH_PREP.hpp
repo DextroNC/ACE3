@@ -14,6 +14,7 @@ PREP(canTreat_holsterCheck);
 PREP(checkBloodPressure);
 PREP(checkBloodPressureLocal);
 PREP(checkPulse);
+PREP(checkPain);
 PREP(checkPulseLocal);
 PREP(checkResponse);
 PREP(cprSuccess);

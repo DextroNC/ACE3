@@ -20,6 +20,14 @@ params ["_unit"];
 // If the unit died the loop is finished
 if (!alive _unit || {!local _unit}) exitWith {};
 
+// Check timer and set cardiac arrest
+_start = _unit getVariable ["ACE_UnconsciousStart", -1];
+
+// Check timer
+if (_start > 0 && CBA_MissionTime - _start > ACE_UnconsciousTimer && ACE_UnconsciousTimer > 0 && !(IN_MED_FACILITY(_unit))) then {
+    [_unit, true] call ace_medical_status_fnc_setCardiacArrestState;
+};
+
 [_unit] call EFUNC(medical_vitals,handleUnitVitals);
 
 // Handle spontaneous wake up from unconsciousness
@@ -47,6 +55,7 @@ if (EGVAR(medical,spontaneousWakeUpChance) > 0) then {
             if (random 1 <= EGVAR(medical,spontaneousWakeUpChance)) then {
                 TRACE_1("Spontaneous wake up!",_unit);
                 [QEGVAR(medical,WakeUp), _unit] call CBA_fnc_localEvent;
+                _unit SetVariable ["ACE_UnconsciousStart", -1];
             };
         };
     } else {

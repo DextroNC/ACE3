@@ -23,6 +23,10 @@ scopeName "Main";
 
 private _useOrder = [[_patient, _medic], [_medic, _patient], [_medic]] select GVAR(allowSharedEquipment);
 
+ if (_medic call FUNC(isMedic)) then {
+     _useOrder = [_medic, _patient];
+ };
+
 {
     private _unit      = _x;
     private _unitItems = _x call EFUNC(common,uniqueItems);

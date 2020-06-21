@@ -227,12 +227,19 @@ class GVAR(actions) {
         allowedSelections[] = {"Head","LeftArm", "RightArm", "LeftLeg", "RightLeg"};
         callbackSuccess = QFUNC(checkBloodPressure);
     };
-    class CheckResponse: CheckPulse {
+    /*class CheckResponse: CheckPulse {
         displayName = CSTRING(Check_Response);
         displayNameProgress = CSTRING(Check_Response_Content);
         allowedSelections[] = {"Head"};
         allowSelfTreatment = 0;
         callbackSuccess = QFUNC(checkResponse);
+    };*/
+    class CheckPain: CheckPulse {
+        displayName = "Check Pain";
+        displayNameProgress = "You check pain of patient";
+        allowedSelections[] = {"Head"};
+        allowSelfTreatment = 0;
+        callbackSuccess = QFUNC(checkPain);
     };
 
     // - Misc -----------------------------------------------------------------

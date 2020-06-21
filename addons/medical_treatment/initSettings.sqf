@@ -223,3 +223,21 @@
     [-1, 3600, 600, 0],
     true
 ] call CBA_settings_fnc_init;
+
+[
+    "ACE_UnconsciousTimer",
+    "SLIDER",
+    ["Unconcious Timer", "Time after which unconcious gets into cardiac arrest"],
+    ["Modifications", "Unconcious"],
+    [-1, 1200, 180, 0],
+    true
+] call CBA_settings_fnc_init;
+
+[
+    "ACE_OverdoseCooldown",
+    "SLIDER",
+    ["Overdose Cooldown", "Time after which dosage down not count towards overdose"],
+    ["Modifications", "Overdose"],
+    [-1, 600, 120, 0],
+    true
+] call CBA_settings_fnc_init;

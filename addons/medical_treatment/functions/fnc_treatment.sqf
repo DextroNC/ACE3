@@ -44,6 +44,11 @@ private _treatmentTime = if (isText (_config >> "treatmentTime")) then {
 
 if (_treatmentTime == 0) exitWith {false};
 
+// Adjust treatment time in medical area
+if (IN_MED_VEHICLE(_medic) || {IN_MED_FACILITY(_medic)}) then {
+    _treatmentTime = floor (_treatmentTime * 0.75);
+};
+
 // Consume one of the treatment items if needed
 // Store item user so that used item can be returned on failure
 private _userAndItem = if (GET_NUMBER_ENTRY(_config >> "consumeItem") == 1) then {

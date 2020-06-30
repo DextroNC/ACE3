@@ -153,11 +153,13 @@ class CfgAmmo {
         ace_frag_skip = 0;
         ace_frag_force = 1;
     };
+    /*
     class rhs_ammo_rgn: rhs_ammo_rgd5 {
         ace_frag_enabled = 0;
         ace_frag_skip = 1;
         ace_frag_force = 0;
     };
+    */
     class rhs_ammo_fakel: GrenadeHand {
         ace_frag_enabled = 0;
         ace_frag_skip = 1;

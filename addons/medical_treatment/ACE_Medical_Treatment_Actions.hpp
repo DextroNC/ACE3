@@ -118,7 +118,7 @@ class GVAR(actions) {
         category = "medication";
         items[] = {"ACE_morphine"};
         condition = "";
-        treatmentTime = 3;
+        treatmentTime = 5;
         callbackSuccess = QFUNC(medication);
         animationMedic = "AinvPknlMstpSnonWnonDnon_medic1";
         sounds[] = {{QPATHTO_R(sounds\Inject.ogg),1,1,50}};
@@ -202,7 +202,7 @@ class GVAR(actions) {
         treatmentLocations = TREATMENT_LOCATIONS_ALL;
         allowedSelections[] = {"Head", "Body"};
         medicRequired = 0;
-        treatmentTime = 2.5;
+        treatmentTime = 2;
         items[] = {};
         condition = QUOTE(!GVAR(advancedDiagnose));
         callbackSuccess = QFUNC(diagnose);

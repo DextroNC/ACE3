@@ -38,19 +38,46 @@ if (IS_BLEEDING(_target)) then {
     _entries pushBack [localize LSTRING(Status_Bleeding), [1, 0, 0, 1]];
 };
 
-// Give a qualitative description of the blood volume lost
-switch (GET_HEMORRHAGE(_target)) do {
-    case 1: {
-        _entries pushBack [localize LSTRING(Lost_Blood1), [1, 0, 0, 1]];
+// Custom diagnosis feedback
+if (EGVAR(medical_treatment,customDiagnose)) then {
+    if (GET_HEMORRHAGE(_target) > 0) then {
+        _entries pushBack ["Lost Blood",[1, 0, 0, 1]];
     };
-    case 2: {
-        _entries pushBack [localize LSTRING(Lost_Blood2), [1, 0, 0, 1]];
+} else {
+    // Vanilla diagnosis feedback
+    // Give a qualitative description of the blood volume lost
+    switch (GET_HEMORRHAGE(_target)) do {
+        case 1: {
+            _entries pushBack [localize LSTRING(Lost_Blood1), [1, 0, 0, 1]];
+        };
+        case 2: {
+            _entries pushBack [localize LSTRING(Lost_Blood2), [1, 0, 0, 1]];
+        };
+        case 3: {
+            _entries pushBack [localize LSTRING(Lost_Blood3), [1, 0, 0, 1]];
+        };
+        case 4: {
+            _entries pushBack [localize LSTRING(Lost_Blood4), [1, 0, 0, 1]];
+        };
     };
-    case 3: {
-        _entries pushBack [localize LSTRING(Lost_Blood3), [1, 0, 0, 1]];
-    };
-    case 4: {
-        _entries pushBack [localize LSTRING(Lost_Blood4), [1, 0, 0, 1]];
+};
+
+ // Indicate the amount of pain the unit is in
+if (_target call EFUNC(common,isAwake)) then {
+    private _pain = GET_PAIN_PERCEIVED(_target);
+    if (_pain > 0) then {
+        private _painText = switch (true) do {
+            case (_pain > 0.5): {
+                ELSTRING(medical_treatment,Status_SeverePain);
+            };
+            case (_pain > 0.1): {
+                ELSTRING(medical_treatment,Status_Pain);
+            };
+            default {
+                ELSTRING(medical_treatment,Status_MildPain);
+            };
+        };
+        _entries pushBack [localize _painText, [1, 1, 1, 1]];
     };
 };
 
@@ -71,24 +98,6 @@ switch (GET_FRACTURES(_target) select _selectionN) do {
     };
 };
 
-// Indicate the amount of pain the unit is in
-if (_target call EFUNC(common,isAwake)) then {
-    private _pain = GET_PAIN_PERCEIVED(_target);
-    if (_pain > 0) then {
-        private _painText = switch (true) do {
-            case (_pain > 0.5): {
-                ELSTRING(medical_treatment,Status_SeverePain);
-            };
-            case (_pain > 0.1): {
-                ELSTRING(medical_treatment,Status_Pain);
-            };
-            default {
-                ELSTRING(medical_treatment,Status_MildPain);
-            };
-        };
-        _entries pushBack [localize _painText, [1, 1, 1, 1]];
-    };
-};
 
 // Show receiving IV volume remaining
 private _totalIvVolume = 0;

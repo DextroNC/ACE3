@@ -17,17 +17,20 @@
  */
 
 params ["_medic", "_patient"];
-private _output = "";
+private _output = "%1 is not in pain";
 
-// Check Pain
-if (GET_PAIN_PERCEIVED(_patient) > 0) then {
-	if (IN_CRDC_ARRST(_patient)) then {
-		_output = "%1 is not responsive";
-	} else {
-		_output = "%1 is in pain";
-	};
+// Check if patient has pulse
+if (IN_CRDC_ARRST(_patient)) then {
+	_output = "%1 is not responsive";
 } else {
-	_output = "%1 is not in pain";
+	// Check if in pain
+	if (GET_PAIN_PERCEIVED(_patient) > 0) then {
+		_output = "%1 is in pain";
+		// Check if in heavy pain
+		if (GET_PAIN_PERCEIVED(_patient) > 0.5) then {
+			_output = "%1 is in severe pain";
+		};
+	}; 
 };
 
 [[_output, _patient call EFUNC(common,getName)], 2] call EFUNC(common,displayTextStructured);

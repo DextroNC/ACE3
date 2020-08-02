@@ -237,7 +237,7 @@
     "ACE_UnconsciousTimer",
     "SLIDER",
     ["Unconcious Timer", "Time after which unconcious gets into cardiac arrest"],
-    ["Modifications", "Unconcious"],
+    [ELSTRING(medical,Category), "Modifications"],
     [-1, 1200, 180, 0],
     true
 ] call CBA_settings_fnc_init;
@@ -246,7 +246,16 @@
     "ACE_OverdoseCooldown",
     "SLIDER",
     ["Overdose Cooldown", "Time after which dosage down not count towards overdose"],
-    ["Modifications", "Overdose"],
+    [ELSTRING(medical,Category), "Modifications"],
     [-1, 600, 120, 0],
+    true
+] call CBA_settings_fnc_init;
+
+[
+    QGVAR(customDiagnose),
+    "CHECKBOX",
+    ["Custom Diagnosis", "Custom output on check blood pressure"],
+    [ELSTRING(medical,Category), "Modifications"],
+    true,
     true
 ] call CBA_settings_fnc_init;

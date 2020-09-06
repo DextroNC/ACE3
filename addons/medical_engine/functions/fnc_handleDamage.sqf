@@ -37,7 +37,11 @@ if !(isDamageAllowed _unit && {_unit getVariable [QEGVAR(medical,allowDamage), t
 private _newDamage = _damage - _oldDamage;
 // Get armor value of hitpoint and calculate damage before armor
 private _armor = [_unit, _hitpoint] call FUNC(getHitpointArmor);
+if ((_armor > ace_medical_minArmor) && (ace_medical_armorMultiplayer > 0) && !(isPlayer _unit)) then {
+    _armor = (_armor * ((100 - _armor)/100)) min ace_medical_minArmor;
+};
 private _realDamage = _newDamage * _armor;
+
 // Damages are stored for "ace_hdbracket" event triggered last
 _unit setVariable [format [QGVAR($%1), _hitPoint], [_realDamage, _newDamage]];
 TRACE_3("Received hit",_hitpoint,_newDamage,_realDamage);

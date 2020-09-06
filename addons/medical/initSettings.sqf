@@ -46,3 +46,21 @@
     [1, 30, 1, 1],
     true
 ] call CBA_settings_fnc_init;
+
+[
+    QGVAR(armorMultiplayer),
+    "SLIDER",
+    ["Armor Multiplier", "Custom Armor multiplier"],
+    [ELSTRING(medical,Category), "Modifications"],
+    [0, 1, 0.00, 2, true],
+    true
+] call CBA_settings_fnc_init;
+
+[
+    QGVAR(minArmor),
+    "SLIDER",
+    ["Minimal Armor", "Not adjusted by modification"],
+    [ELSTRING(medical,Category), "Modifications"],
+    [0, 20, 5, 0, true],
+    true
+] call CBA_settings_fnc_init;

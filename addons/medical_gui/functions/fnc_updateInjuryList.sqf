@@ -62,6 +62,23 @@ if (EGVAR(medical_treatment,customDiagnose)) then {
     };
 };
 
+// Indicate if a tourniquet is applied
+if (HAS_TOURNIQUET_APPLIED_ON(_target,_selectionN)) then {
+    _entries pushBack [localize LSTRING(Status_Tourniquet_Applied), [0.77, 0.51, 0.08, 1]];
+};
+
+// Indicate current body part fracture status
+switch (GET_FRACTURES(_target) select _selectionN) do {
+    case 1: {
+        _entries pushBack [localize LSTRING(Status_Fractured), [1, 0, 0, 1]];
+    };
+    case -1: {
+        if (EGVAR(medical,fractures) in [2, 3]) then { // Ignore if the splint has no effect
+            _entries pushBack [localize LSTRING(Status_SplintApplied), [0.2, 0.2, 1, 1]];
+        };
+    };
+};
+
  // Indicate the amount of pain the unit is in
 if (_target call EFUNC(common,isAwake)) then {
     private _pain = GET_PAIN_PERCEIVED(_target);

@@ -52,7 +52,7 @@
     "SLIDER",
     ["Armor Multiplier", "Custom Armor multiplier"],
     [ELSTRING(medical,Category), "Modifications"],
-    [0, 1, 0.00, 2, true],
+    [0, 100, 0, 0],
     true
 ] call CBA_settings_fnc_init;
 
@@ -61,6 +61,6 @@
     "SLIDER",
     ["Minimal Armor", "Not adjusted by modification"],
     [ELSTRING(medical,Category), "Modifications"],
-    [0, 20, 5, 0, true],
+    [0, 50, 5, 0],
     true
 ] call CBA_settings_fnc_init;

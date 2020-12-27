@@ -37,10 +37,21 @@ if !(isDamageAllowed _unit && {_unit getVariable [QEGVAR(medical,allowDamage), t
 private _newDamage = _damage - _oldDamage;
 // Get armor value of hitpoint and calculate damage before armor
 private _armor = [_unit, _hitpoint] call FUNC(getHitpointArmor);
-if ((_armor > ace_medical_minArmor) && (ace_medical_armorMultiplayer > 0) && !(isPlayer _unit)) then {
-    _armor = (_armor * ((100 + ace_medical_armorMultiplayer) / 100)) min ace_medical_minArmor;
-};
+//if ((_armor > ace_medical_minArmor) && (ace_medical_armorMultiplayer > 0) && !(isPlayer _unit)) then {
+   // _armor = (_armor * ((100 + ace_medical_armorMultiplayer) / 100)) max ace_medical_minArmor;
+    /*if (_armor > ace_medical_maxArmor) then {
+        _armor = ace_medical_maxArmor;
+    };*/
+//};
 private _realDamage = _newDamage * _armor;
+
+// Adjust damage to compensate for armor
+if (ace_medical_armorMultiplier > 0 && _armor > ace_medical_armorMultiplierMin) then {
+   // private _str = str (_newDamage);
+    _newDamage = (_newDamage + ((_armor min ace_medical_armorMultiplierCap) * (ace_medical_armorMultiplier / 10000))) min (_newDamage + ace_medical_armorMultiplierMax);
+   // systemChat (_str + " / " + str(_newDamage));
+};
+
 
 // Damages are stored for "ace_hdbracket" event triggered last
 _unit setVariable [format [QGVAR($%1), _hitPoint], [_realDamage, _newDamage]];
@@ -175,6 +186,7 @@ if (_hitPoint isEqualTo "ace_hdbracket") exitWith {
     // No wounds for minor damage
     if (_receivedDamage > 1E-3) then {
         TRACE_3("received",_receivedDamage,_woundedHitPoint,_damageSelectionArray);
+        //systemChat str(_receivedDamage);
         [QEGVAR(medical,woundReceived), [_unit, _woundedHitPoint, _receivedDamage, _shooter, _ammo, _damageSelectionArray]] call CBA_fnc_localEvent;
     };
 

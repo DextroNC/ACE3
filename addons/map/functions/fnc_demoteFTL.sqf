@@ -22,4 +22,4 @@ _unit setVariable ["ACE_FTL","",true];
 _unit setUnitRank "PRIVATE";
 
 _str = "You are not FTL anymore"; 
- [_str] call EFUNC(common,displayTextStructured);
+[_str] call EFUNC(common,displayTextStructured);

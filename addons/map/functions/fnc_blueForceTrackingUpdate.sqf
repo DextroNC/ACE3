@@ -89,6 +89,10 @@ if (GVAR(BFT_Enabled) and {(!isNil "ACE_player") and {alive ACE_player}}) then {
 			case "R-2": {["SevenR_Rt","SRColorBlue",false]};
 			case "R-3": {["SevenR_Rtr","SRColorBlue",false]};	
 			case "R-4": {["SevenR_Rf","SRColorBlue",false]};	
+			case "RPR-1": {["SevenR_Rf","SRColorRed",false]};	
+			case "RPR-2": {["SevenR_Rf","SRColorRed",false]};	
+			case "RPR-3": {["SevenR_Rf","SRColorRed",false]};	
+			case "RPR-4": {["SevenR_Rf","SRColorRed",false]};	
 			case "F": {["SevenR_Fo","SRColorBlue",false]};
 			case "F-1": {["SevenR_Fo","SRColorBlue",false]};
 			case "F-2": {["SevenR_Ft","SRColorBlue",false]};		
@@ -140,6 +144,8 @@ if (GVAR(BFT_Enabled) and {(!isNil "ACE_player") and {alive ACE_player}}) then {
 			switch (_x getVariable ["ACE_FTL",""]) do {
 				case "RED": {_markerDetail = ["SevenR_FTL","SRColorRed",false]};
 				case "BLUE": {_markerDetail = ["SevenR_FTL","SRColorBlue",false]};
+				case "GREEN": {_markerDetail = ["SevenR_FTL","SRColorGreen",false]};
+				case "YELLOW": {_markerDetail = ["SevenR_FTL","SRColorGold",false]};
 			};
 			// Draw FTL Marker
 			if (count _markerDetail > 0) then {

@@ -18,7 +18,7 @@
 params ["_unit"];
 
 // Check Condition
-if (!((_unit getVariable ["ACE_FTL",""]) in ["RED","BLUE"]) && (assignedTeam _unit in ["RED","BLUE"]) && (leader _unit  != _unit) && !([_unit] call FUNC(isSergeant))) exitWith {
+if (!((_unit getVariable ["ACE_FTL",""]) in ["RED","BLUE","YELLOW","GREEN"]) && (assignedTeam _unit in ["RED","BLUE","YELLOW","GREEN"]) && (leader _unit  != _unit) && !([_unit] call FUNC(isSergeant))) exitWith {
 	true
 };
 
